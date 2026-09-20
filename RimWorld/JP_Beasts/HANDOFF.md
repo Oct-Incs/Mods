@@ -371,13 +371,50 @@ XML整形式チェック済み。**この修正はまだユーザーによるPla
 正しくてもXML上の配置(親要素)を間違えるケースは、静かに無視されるだけでエラーにすら
 気づきにくい。
 
+### 3.16 食性の雑食化、肉・革産出量+20%、卵生種の産卵頻度短縮(ユーザー要望によるバランス調整)
+ユーザーから3点の要望: (1) 女郎蜘蛛など現在`foodType: CarnivoreAnimal`になっている
+モンスターを`OmnivoreAnimal`に変更、(2) 肉・革の産出量が以前より減っている気がするので
+調整、(3) 卵を産む頻度も以前より減っている気がするので調整。
+
+(2)(3)については、実際に減ったのかをこのリポジトリのgit履歴で確認しようとしたが、
+`Scripts/gen_settings_patch.py`・`Defs/ThingDefs_Races/*.xml`とも**リポジトリ統合時
+(`630466c`/`6f3b128`)の1スナップショットしか記録がなく**、それ以前の長期セッションでの
+反復調整はコミット単位で残っていないため、実際に数値が下がったのかは確認できなかった。
+ただし設定シートはまさにこの種の再調整のために存在するので、実害の有無に関わらず
+ユーザーの要望通り引き上げた。
+
+実施内容:
+- **食性**: `foodType: CarnivoreAnimal`だった12体
+  (JapaneseWolf/EzoWolf/AdamantiteBeast/Meganeura/Titanoptera/Smilodon/
+  Pulmonoscorpius/Megarachne/Nekomata/Yukionna/Dragonkin/Jorogumo)を
+  全て`OmnivoreAnimal`に変更。`Defs/ThingDefs_Races/*.xml`に直接記載。
+  残り11体(元からOmnivore 7体+Vegetarian 4体: Mammoth/WoollyRhino/
+  IrishElk/Arthropleura)は変更なし。これで23体中`CarnivoreAnimal`は0体。
+- **肉量・革量**: `Scripts/gen_settings_patch.py`の`CREATURES`テーブルの
+  MeatAmount/LeatherAmountを全23体一律+20%(四捨五入)。`python3
+  Scripts/gen_settings_patch.py`で`Patch_CreatureSettings.xml`に反映済み。
+  wool量・drawSizeは変更していない。
+- **産卵頻度**: 卵生8体の`eggLayIntervalDays`(`Defs/ThingDefs_Races/*.xml`に
+  直接記載、設定シートの対象外)を約20%短縮: AdamantiteBeast 20→16、
+  Meganeura 3→2.5、Titanoptera 5→4、Arthropleura 6→5、
+  Pulmonoscorpius 5→4、Megarachne 4→3、Titanomyrma 3→2.5、
+  Archimylacris 2→1.5。`hatcherDaystoHatch`(孵化日数、`Eggs.xml`/
+  `Eggs_Insects.xml`)は今回の要望が「産卵頻度」のみだったため変更していない
+  (元々ほとんどの個体で孵化日数 > 産卵間隔なので、間隔を縮めても孵化前に
+  次の卵を産む状態になるだけで矛盾はない)。
+
+`validate.py`で検証済み、既知の1件(Shearable 16 vs 16)以外の問題なし。
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
 要点のみ記す。
 
 - **出現頻度・肉量・革量・毛量・drawSize**: `Scripts/gen_settings_patch.py`の
-  `CREATURES`テーブルが正。3.8参照。
+  `CREATURES`テーブルが正。3.8参照。肉量・革量は3.16で全23体+20%済み。
+- **foodType**: 23体中`CarnivoreAnimal`は0体(3.16で全て`OmnivoreAnimal`化)。
+  `VegetarianAnimal`はMammoth/WoollyRhino/IrishElk/Arthropleuraの4体、
+  残り19体は`OmnivoreAnimal`。
 - **Wildness**: 妖怪+AdamantiteBeast=0.985(Thrumbo相当)、Mammoth+昆虫類=0.96、
   他の古代哺乳類=0.93。3.3参照。
 - **predator**: 全23体`false`。3.6参照(入植者の子供を誤って襲う不具合の
@@ -393,7 +430,8 @@ XML整形式チェック済み。**この修正はまだユーザーによるPla
   `Defs/ThingDefs_Items/Meats.xml`)。他の古代獣は各自専用の`JP_Meat_*`。
   3.9〜3.11参照。
 - **gestationPeriodDays / eggLayIntervalDays**: 3.12・3.13参照。値は
-  `Defs/ThingDefs_Races/*.xml` に直接記載。
+  `Defs/ThingDefs_Races/*.xml` に直接記載。eggLayIntervalDaysは3.16で
+  卵生8体を約20%短縮済み。
 
 ## 5. ファイル構成マップ
 

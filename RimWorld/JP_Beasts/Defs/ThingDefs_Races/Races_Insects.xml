@@ -55,7 +55,7 @@
         <eggFertilizedDef>JP_Egg_ArthropleuraFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_ArthropleuraUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>1</eggFertilizationCountMax>
-        <eggLayIntervalDays>6</eggLayIntervalDays>
+        <eggLayIntervalDays>5</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>1</eggCountRange>
       </li>
@@ -112,7 +112,7 @@
       <baseBodySize>1.6</baseBodySize>
       <baseHealthScale>1.8</baseHealthScale>
       <baseHungerRate>0.75</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <meatDef>JP_Meat_Insect</meatDef>
@@ -145,7 +145,7 @@
         <eggFertilizedDef>JP_Egg_PulmonoscorpiusFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_PulmonoscorpiusUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>1</eggFertilizationCountMax>
-        <eggLayIntervalDays>5</eggLayIntervalDays>
+        <eggLayIntervalDays>4</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>1~2</eggCountRange>
       </li>
@@ -205,7 +205,7 @@
       <baseBodySize>1.2</baseBodySize>
       <baseHealthScale>1.3</baseHealthScale>
       <baseHungerRate>0.65</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <meatDef>JP_Meat_Insect</meatDef>
@@ -238,7 +238,7 @@
         <eggFertilizedDef>JP_Egg_MegarachneFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_MegarachneUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>1</eggFertilizationCountMax>
-        <eggLayIntervalDays>4</eggLayIntervalDays>
+        <eggLayIntervalDays>3</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>1~3</eggCountRange>
       </li>
@@ -328,7 +328,7 @@
         <eggFertilizedDef>JP_Egg_TitanomyrmaFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_TitanomyrmaUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>2</eggFertilizationCountMax>
-        <eggLayIntervalDays>3</eggLayIntervalDays>
+        <eggLayIntervalDays>2.5</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>2~4</eggCountRange>
       </li>
@@ -402,7 +402,7 @@
         <eggFertilizedDef>JP_Egg_ArchimylacrisFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_ArchimylacrisUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>3</eggFertilizationCountMax>
-        <eggLayIntervalDays>2</eggLayIntervalDays>
+        <eggLayIntervalDays>1.5</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>2~5</eggCountRange>
       </li>

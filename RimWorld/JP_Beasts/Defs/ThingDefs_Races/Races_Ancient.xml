@@ -21,7 +21,7 @@
       <baseBodySize>1.3</baseBodySize>
       <baseHealthScale>1.2</baseHealthScale>
       <baseHungerRate>0.6</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_JapaneseWolf</meatDef>
@@ -108,7 +108,7 @@
       <baseBodySize>1.5</baseBodySize>
       <baseHealthScale>1.4</baseHealthScale>
       <baseHungerRate>0.65</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_EzoWolf</meatDef>
@@ -374,7 +374,7 @@
       <baseBodySize>3.2</baseBodySize>
       <baseHealthScale>3.2</baseHealthScale>
       <baseHungerRate>1.0</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_Adamantite</leatherDef>
       <meatDef>JP_Meat_Adamantite</meatDef>
@@ -412,7 +412,7 @@
         <eggFertilizedDef>JP_Egg_AdamantiteFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_AdamantiteUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>1</eggFertilizationCountMax>
-        <eggLayIntervalDays>20</eggLayIntervalDays>
+        <eggLayIntervalDays>16</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>1</eggCountRange>
       </li>
@@ -468,7 +468,7 @@
       <baseBodySize>0.3</baseBodySize>
       <baseHealthScale>0.4</baseHealthScale>
       <baseHungerRate>0.3</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <meatDef>JP_Meat_Insect</meatDef>
@@ -501,7 +501,7 @@
         <eggFertilizedDef>JP_Egg_MeganeuraFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_MeganeuraUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>2</eggFertilizationCountMax>
-        <eggLayIntervalDays>3</eggLayIntervalDays>
+        <eggLayIntervalDays>2.5</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>1~3</eggCountRange>
       </li>
@@ -551,7 +551,7 @@
       <baseBodySize>1.4</baseBodySize>
       <baseHealthScale>1.6</baseHealthScale>
       <baseHungerRate>0.8</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <meatDef>JP_Meat_Insect</meatDef>
@@ -584,7 +584,7 @@
         <eggFertilizedDef>JP_Egg_TitanopteraFert</eggFertilizedDef>
         <eggUnfertilizedDef>JP_Egg_TitanopteraUnfert</eggUnfertilizedDef>
         <eggFertilizationCountMax>1</eggFertilizationCountMax>
-        <eggLayIntervalDays>5</eggLayIntervalDays>
+        <eggLayIntervalDays>4</eggLayIntervalDays>
         <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
         <eggCountRange>1~2</eggCountRange>
       </li>

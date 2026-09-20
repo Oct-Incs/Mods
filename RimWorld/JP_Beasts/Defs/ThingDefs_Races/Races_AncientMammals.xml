@@ -196,7 +196,7 @@
       <baseBodySize>1.5</baseBodySize>
       <baseHealthScale>1.5</baseHealthScale>
       <baseHungerRate>0.7</baseHungerRate>
-      <foodType>CarnivoreAnimal</foodType>
+      <foodType>OmnivoreAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_Smilodon</meatDef>
