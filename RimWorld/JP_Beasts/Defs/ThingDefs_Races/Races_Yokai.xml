@@ -631,8 +631,8 @@
     <graphicData>
       <texPath>Things/Pawn/Animal/JP_Jorogumo/JP_Jorogumo</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>1.3</drawSize>
-      <shadowData><volume>(0.35, 0.4, 0.25)</volume></shadowData>
+      <drawSize>1.56</drawSize>
+      <shadowData><volume>(0.42, 0.48, 0.3)</volume></shadowData>
     </graphicData>
   </ThingDef>
 

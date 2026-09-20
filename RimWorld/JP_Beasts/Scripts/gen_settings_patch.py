@@ -121,7 +121,7 @@ CREATURES = [
      300, 120, 56, 1.9),
     ("JP_Jorogumo", "女郎蜘蛛",
      [("TemperateForest", 0.7), ("TropicalRainforest", 0.7), ("TemperateSwamp", 0.55)],
-     166, 72, 48, 1.3),
+     166, 72, 48, 1.56),
 ]
 
 def fmt(v):
