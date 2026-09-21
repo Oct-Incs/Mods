@@ -774,8 +774,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Nekomata"]/statBases</xpath>
       <value>
-        <MeatAmount>240</MeatAmount>
-        <LeatherAmount>84</LeatherAmount>
+        <MeatAmount>480</MeatAmount>
+        <LeatherAmount>252</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -785,7 +785,7 @@
     <xpath>Defs/ThingDef[defName="JP_Nekomata"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Nekomata"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>50</woolAmount></value>
+      <value><woolAmount>125</woolAmount></value>
     </match>
   </Operation>
 
@@ -827,8 +827,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Youko"]/statBases</xpath>
       <value>
-        <MeatAmount>234</MeatAmount>
-        <LeatherAmount>82</LeatherAmount>
+        <MeatAmount>468</MeatAmount>
+        <LeatherAmount>246</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -838,7 +838,7 @@
     <xpath>Defs/ThingDef[defName="JP_Youko"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Youko"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>44</woolAmount></value>
+      <value><woolAmount>110</woolAmount></value>
     </match>
   </Operation>
 
@@ -873,8 +873,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Yukionna"]/statBases</xpath>
       <value>
-        <MeatAmount>240</MeatAmount>
-        <LeatherAmount>84</LeatherAmount>
+        <MeatAmount>480</MeatAmount>
+        <LeatherAmount>252</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -884,7 +884,7 @@
     <xpath>Defs/ThingDef[defName="JP_Yukionna"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Yukionna"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>44</woolAmount></value>
+      <value><woolAmount>110</woolAmount></value>
     </match>
   </Operation>
 
@@ -919,8 +919,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Zashikiwarashi"]/statBases</xpath>
       <value>
-        <MeatAmount>180</MeatAmount>
-        <LeatherAmount>60</LeatherAmount>
+        <MeatAmount>360</MeatAmount>
+        <LeatherAmount>180</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -930,7 +930,7 @@
     <xpath>Defs/ThingDef[defName="JP_Zashikiwarashi"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Zashikiwarashi"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>30</woolAmount></value>
+      <value><woolAmount>75</woolAmount></value>
     </match>
   </Operation>
 
@@ -972,8 +972,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Tengu"]/statBases</xpath>
       <value>
-        <MeatAmount>256</MeatAmount>
-        <LeatherAmount>90</LeatherAmount>
+        <MeatAmount>512</MeatAmount>
+        <LeatherAmount>270</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -983,7 +983,7 @@
     <xpath>Defs/ThingDef[defName="JP_Tengu"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Tengu"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>50</woolAmount></value>
+      <value><woolAmount>125</woolAmount></value>
     </match>
   </Operation>
 
@@ -1025,8 +1025,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Oni"]/statBases</xpath>
       <value>
-        <MeatAmount>286</MeatAmount>
-        <LeatherAmount>106</LeatherAmount>
+        <MeatAmount>572</MeatAmount>
+        <LeatherAmount>318</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -1036,7 +1036,7 @@
     <xpath>Defs/ThingDef[defName="JP_Oni"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Oni"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>60</woolAmount></value>
+      <value><woolAmount>150</woolAmount></value>
     </match>
   </Operation>
 
@@ -1085,8 +1085,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Dragonkin"]/statBases</xpath>
       <value>
-        <MeatAmount>300</MeatAmount>
-        <LeatherAmount>120</LeatherAmount>
+        <MeatAmount>600</MeatAmount>
+        <LeatherAmount>360</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -1096,7 +1096,7 @@
     <xpath>Defs/ThingDef[defName="JP_Dragonkin"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Dragonkin"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>56</woolAmount></value>
+      <value><woolAmount>140</woolAmount></value>
     </match>
   </Operation>
 
@@ -1138,8 +1138,8 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Jorogumo"]/statBases</xpath>
       <value>
-        <MeatAmount>166</MeatAmount>
-        <LeatherAmount>72</LeatherAmount>
+        <MeatAmount>332</MeatAmount>
+        <LeatherAmount>216</LeatherAmount>
       </value>
     </match>
   </Operation>
@@ -1149,7 +1149,7 @@
     <xpath>Defs/ThingDef[defName="JP_Jorogumo"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/ThingDef[defName="JP_Jorogumo"]/comps/li[@Class="CompProperties_Shearable"]/woolAmount</xpath>
-      <value><woolAmount>48</woolAmount></value>
+      <value><woolAmount>120</woolAmount></value>
     </match>
   </Operation>
 
