@@ -425,6 +425,42 @@ XML整形式チェック済み。**この修正はまだユーザーによるPla
 
 `validate.py`で検証済み、既知の1件(Shearable 16 vs 16)以外の問題なし。
 
+### 3.17 雑食化したはずのモンスターが野草・畑の作物・花を一切食べない(根本原因: foodTypeの値そのものが間違っていた)
+3.16の雑食化後、ユーザーから「雑食にしたはずなのに野草も畑の作物も花も食べない」と
+報告を受けた。デコンパイル済みソース(`RimWorld/FoodTypeFlags.cs`・`FoodUtility.cs`)
+で実際に裏取りしたところ、**`OmnivoreAnimal`/`VegetarianAnimal`という値そのものに、
+生えている植物を食べる資格である`Plant`ビットフラグが含まれていない**ことが判明した:
+
+```csharp
+// FoodTypeFlags.cs (実際の数値)
+VegetarianAnimal      = 3857  // Plant(64)を含まない
+OmnivoreAnimal        = 3867  // Plant(64)を含まない
+VegetarianRoughAnimal = 3921  // = VegetarianAnimal + Plant(64)
+OmnivoreRoughAnimal   = 3931  // = OmnivoreAnimal + Plant(64)
+
+// FoodUtility.cs - 生えている植物を探索候補に入れるかどうかの判定
+if ((eater.RaceProps.foodType & (FoodTypeFlags.Plant | FoodTypeFlags.Tree)) != FoodTypeFlags.None && allowPlant)
+```
+
+つまり`Plant`フラグを持たない限り、そもそも野草・畑の作物・花などの「生えている
+植物」を食料の探索候補にすら入れない。バニラのマフロ(草食)は`VegetarianRoughAnimal`、
+イノシシ相当の雑食獣は`OmnivoreRoughAnimal`という、末尾に"Rough"が付いた値を使って
+おり、これが`Plant`フラグを持つ側だと確認した(Webサーチでバニラのマフロが実際に
+`VegetarianRoughAnimal`を使っていることも確認済み)。
+
+**このMODは元々"Rough"の付かない`OmnivoreAnimal`/`VegetarianAnimal`を使っていたため、
+3.16で雑食化した12体だけでなく、最初からVegetarianだった4体
+(Mammoth/WoollyRhino/IrishElk/Arthropleura)を含めた23体全てが、リリース当初から
+一度も生きた植物を食べられない状態だった。** 今回3.16で雑食化した個体が急に
+目立つようになったことで発覚したが、実際にはずっと前からの潜在バグだった。
+
+**修正**: `Defs/ThingDefs_Races/*.xml`の23体全てで、`foodType`を
+`OmnivoreAnimal`→`OmnivoreRoughAnimal`(19体)、`VegetarianAnimal`→
+`VegetarianRoughAnimal`(4体)に変更。`validate.py`で検証済み。
+
+**この修正はまだユーザーによるゲーム内確認が取れていない。次回、実際に野草・畑の
+作物・花を食べるようになったか確認すること。**
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
@@ -432,9 +468,10 @@ XML整形式チェック済み。**この修正はまだユーザーによるPla
 
 - **出現頻度・肉量・革量・毛量・drawSize**: `Scripts/gen_settings_patch.py`の
   `CREATURES`テーブルが正。3.8参照。肉量・革量は3.16で全23体+20%済み。
-- **foodType**: 23体中`CarnivoreAnimal`は0体(3.16で全て`OmnivoreAnimal`化)。
-  `VegetarianAnimal`はMammoth/WoollyRhino/IrishElk/Arthropleuraの4体、
-  残り19体は`OmnivoreAnimal`。
+- **foodType**: 23体中`CarnivoreAnimal`は0体(3.16で全て雑食/草食化)。
+  `VegetarianRoughAnimal`はMammoth/WoollyRhino/IrishElk/Arthropleuraの4体、
+  残り19体は`OmnivoreRoughAnimal`。"Rough"無しの値は生きた植物を食べられない
+  (3.17参照)ため、必ず"Rough"付きを使うこと。
 - **Wildness**: 妖怪+AdamantiteBeast=0.985(Thrumbo相当)、Mammoth+昆虫類=0.96、
   他の古代哺乳類=0.93。3.3参照。
 - **predator**: 全23体`false`。3.6参照(入植者の子供を誤って襲う不具合の

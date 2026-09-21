@@ -21,7 +21,7 @@
       <baseBodySize>0.9</baseBodySize>
       <baseHealthScale>1.0</baseHealthScale>
       <baseHungerRate>0.6</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -94,7 +94,7 @@
       <baseBodySize>0.85</baseBodySize>
       <baseHealthScale>0.9</baseHealthScale>
       <baseHungerRate>0.6</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -173,7 +173,7 @@
       <baseBodySize>0.9</baseBodySize>
       <baseHealthScale>1.0</baseHealthScale>
       <baseHungerRate>0.5</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -251,7 +251,7 @@
       <baseBodySize>0.5</baseBodySize>
       <baseHealthScale>0.6</baseHealthScale>
       <baseHungerRate>0.35</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -335,7 +335,7 @@
       <baseBodySize>1.1</baseBodySize>
       <baseHealthScale>1.2</baseHealthScale>
       <baseHungerRate>0.65</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -408,7 +408,7 @@
       <baseBodySize>1.8</baseBodySize>
       <baseHealthScale>2.0</baseHealthScale>
       <baseHungerRate>1.1</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -493,7 +493,7 @@
       <baseBodySize>1.6</baseBodySize>
       <baseHealthScale>2.2</baseHealthScale>
       <baseHungerRate>0.9</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>Meat_Human</meatDef>
@@ -572,7 +572,7 @@
       <baseBodySize>0.95</baseBodySize>
       <baseHealthScale>1.0</baseHealthScale>
       <baseHungerRate>0.55</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
       <meatDef>JP_Meat_Insect</meatDef>

@@ -22,7 +22,7 @@
       <baseBodySize>2.4</baseBodySize>
       <baseHealthScale>2.4</baseHealthScale>
       <baseHungerRate>1.0</baseHungerRate>
-      <foodType>VegetarianAnimal</foodType>
+      <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_WoollyRhino</meatDef>
@@ -109,7 +109,7 @@
       <baseBodySize>1.6</baseBodySize>
       <baseHealthScale>1.3</baseHealthScale>
       <baseHungerRate>0.7</baseHungerRate>
-      <foodType>VegetarianAnimal</foodType>
+      <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_IrishElk</meatDef>
@@ -196,7 +196,7 @@
       <baseBodySize>1.5</baseBodySize>
       <baseHealthScale>1.5</baseHealthScale>
       <baseHungerRate>0.7</baseHungerRate>
-      <foodType>OmnivoreAnimal</foodType>
+      <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_Smilodon</meatDef>
