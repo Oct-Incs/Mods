@@ -24,7 +24,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_JapaneseWolf</meatDef>
+      <specificMeatDef>JP_Meat_JapaneseWolf</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -111,7 +111,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_EzoWolf</meatDef>
+      <specificMeatDef>JP_Meat_EzoWolf</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -199,7 +199,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_Mammoth</meatDef>
+      <specificMeatDef>JP_Meat_Mammoth</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -288,7 +288,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_Mazotairos</meatDef>
+      <specificMeatDef>JP_Meat_Mazotairos</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -377,7 +377,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_Adamantite</leatherDef>
-      <meatDef>JP_Meat_Adamantite</meatDef>
+      <specificMeatDef>JP_Meat_Adamantite</specificMeatDef>
       <manhunterOnDamageChance>1.0</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.28</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -471,7 +471,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -554,7 +554,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>1.0</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.28</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>

@@ -163,8 +163,8 @@
 
   <!-- ================ Jorogumo ================
        専用の卵画像は用意していないため、同じ蜘蛛型のメガラクネの卵テクスチャを
-       色違い(赤紫)で流用している(JP_Meat_InsectがJP_Meat_JapaneseWolfの
-       テクスチャを色違いで流用しているのと同じパターン)。 -->
+       色違い(赤紫)で流用している(既存の他アイテムのテクスチャを色違いで
+       再利用する、このMODで繰り返し使っているパターンと同じ)。 -->
   <ThingDef ParentName="EggFertBase">
     <defName>JP_Egg_JorogumoFert</defName>
     <label>jorogumo egg (fert.)</label>

@@ -25,7 +25,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_WoollyRhino</meatDef>
+      <specificMeatDef>JP_Meat_WoollyRhino</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -112,7 +112,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_IrishElk</meatDef>
+      <specificMeatDef>JP_Meat_IrishElk</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -199,7 +199,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
-      <meatDef>JP_Meat_Smilodon</meatDef>
+      <specificMeatDef>JP_Meat_Smilodon</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>

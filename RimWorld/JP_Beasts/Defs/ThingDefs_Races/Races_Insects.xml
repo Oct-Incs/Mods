@@ -25,7 +25,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>1.0</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.28</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -115,7 +115,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>1.0</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.28</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -208,7 +208,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -298,7 +298,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -372,7 +372,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Chitin_Ancient</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>

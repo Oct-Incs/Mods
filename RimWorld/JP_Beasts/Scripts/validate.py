@@ -5,13 +5,27 @@ root, or `python3 /path/to/JP_Beasts/Scripts/validate.py` from elsewhere.
 
 Checks:
   1. Every XML file parses (well-formed).
-  2. Every JP_-prefixed meatDef/leatherDef/woolDef/hatcherPawn/race reference
-     resolves to a defName that actually exists somewhere in the mod.
+  2. Every JP_-prefixed specificMeatDef/leatherDef/woolDef/hatcherPawn/race
+     reference resolves to a defName that actually exists somewhere in the
+     mod.
   3. Every <texPath> resolves to a real file under Textures/.
-  4. No leftover references to the old per-species insect meat defs that
-     were deleted when insect meat was unified into JP_Meat_Insect.
+  4. No leftover references to old, now-deleted meat defs (the original
+     per-species insect meats, and JP_Meat_Insect itself after 3.19 moved
+     all insect-flavored creatures onto vanilla's shared insect meat via
+     useMeatFrom).
   5. Shearable comp count vs. settings-sheet wool-patch count (a rough
      parity check, not authoritative).
+  6. No <meatDef> tag anywhere in Defs/ThingDefs_Races - see HANDOFF.md 3.19.
+     RaceProperties.meatDef is a runtime-computed [Unsaved] field that
+     RimWorld's implied-def generator (ThingDefGenerator_Meat) silently
+     overwrites regardless of what XML sets it to; the real, XML-authorable
+     fields are <specificMeatDef> (point at one explicit existing item) and
+     <useMeatFrom> (share generation with another race, e.g. vanilla
+     Megaspider). <meatDef> never errors when used - it's a real field on
+     the class - so this class of mistake produces no warning anywhere
+     except a player noticing the wrong item in-game. If this check ever
+     fires again, do not silently rename it back - re-read HANDOFF.md 3.19
+     first.
 """
 import xml.etree.ElementTree as ET
 import glob, os, re, pathlib
@@ -42,8 +56,11 @@ for f in xml_files:
         defnames.add(m.group(1))
 
 # 3. Collect referenced defNames we expect to exist among our own JP_ set
-# (meatDef/leatherDef/woolDef/hatcherPawn/race referencing our own JP_ prefixed defs)
-ref_tags = ["meatDef", "leatherDef", "woolDef", "hatcherPawn", "race"]
+# (specificMeatDef/leatherDef/woolDef/hatcherPawn/race referencing our own
+# JP_ prefixed defs - useMeatFrom targets like vanilla "Megaspider" are
+# intentionally not JP_-prefixed and can't be checked without vanilla Core,
+# so they're outside what this check can verify)
+ref_tags = ["specificMeatDef", "leatherDef", "woolDef", "hatcherPawn", "race"]
 missing = []
 for f in xml_files:
     txt = open(f, encoding="utf-8").read()
@@ -58,7 +75,22 @@ if missing:
     for m in missing:
         print(" ", m)
 else:
-    print("All JP_-prefixed meatDef/leatherDef/woolDef/hatcherPawn/race references resolve.")
+    print("All JP_-prefixed specificMeatDef/leatherDef/woolDef/hatcherPawn/race references resolve.")
+
+# 3b. <meatDef> must never appear in Defs/ThingDefs_Races - see docstring
+# item 6 and HANDOFF.md 3.19.
+meatdef_races = glob.glob(f"{BASE}/Defs/ThingDefs_Races/*.xml")
+stray_meatdef = []
+for f in meatdef_races:
+    txt = open(f, encoding="utf-8").read()
+    if "<meatDef>" in txt:
+        stray_meatdef.append(f)
+if stray_meatdef:
+    print("STRAY <meatDef> TAGS (use <specificMeatDef> or <useMeatFrom> instead - see HANDOFF.md 3.19):")
+    for f in stray_meatdef:
+        print(" ", f)
+else:
+    print("No stray <meatDef> tags in Defs/ThingDefs_Races (correctly using specificMeatDef/useMeatFrom).")
 
 # 4. texPath -> file existence check
 texpaths = set()
@@ -85,7 +117,7 @@ else:
 # 5. check no leftover references to deleted JP_Meat_* insect defs
 deleted_meats = ["JP_Meat_Meganeura", "JP_Meat_Titanoptera", "JP_Meat_Arthropleura",
                   "JP_Meat_Pulmonoscorpius", "JP_Meat_Megarachne", "JP_Meat_Titanomyrma",
-                  "JP_Meat_Archimylacris"]
+                  "JP_Meat_Archimylacris", "JP_Meat_Insect"]
 leftover = []
 for f in xml_files:
     txt = open(f, encoding="utf-8").read()

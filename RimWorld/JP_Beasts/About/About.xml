@@ -17,7 +17,7 @@
 
 - 毛(Wool): テイムして懐かせた個体を定期的に毛刈りすることで入手
 - 革・肉: 屠殺した死体から入手(通常の動物と同じ)
-- 肉は種族ごとに統一済み: 妖怪系(女郎蜘蛛を除く)は人肉、古代の虫型(女郎蜘蛛を含む)は本MOD独自の共有アイテム「虫肉」(JP_Meat_Insect)を使用
+- 肉は種族ごとに統一済み: 妖怪系(女郎蜘蛛を除く)は人肉、古代の虫型(女郎蜘蛛を含む)はバニラの虫肉(メガスパイダー等と共通の実在アイテム)と統合済み
 - 皮・毛は種族ごとに統一済み: 妖怪系は全種共通で「妖怪の輝く革/毛」を使用
 - 昆虫種とアダマンタイトは卵生で、受精卵を孵化させて繁殖します
 - 座敷童はテイムすると、ごく稀に銀を産出します(Milkableコンポーネントを転用した実験的機能)
@@ -44,7 +44,7 @@ Alpha Animalsと併用する場合は、任意で "sarg.alphaanimals" の後に�
 --- English ---
 Adds 23 naturally-spawning hostile creatures (8 yokai-type humanoids, 8 ancient-type beasts, 7 ancient-type insects) as wild animals across several vanilla biomes. Wool is obtained by shearing a tamed individual; leather and meat by butchering. All insect-type creatures plus the Adamantite Beast reproduce via eggs. Zashikiwarashi rarely produces silver when tamed (an experimental repurposing of the Milkable comp). Youko/Dragonkin claws carry fire damage, Yukionna's carry frost damage, Pulmonoscorpius's stinger and Jorogumo's fangs carry toxic damage. Woolly Rhino, Irish Elk and Smilodon are real, now-extinct ice-age mammals.
 
-Materials are unified by category: every yokai-type creature except Jorogumo yields human meat; Jorogumo and every ancient-type insect yield this mod's own shared "insect meat" item (JP_Meat_Insect - a distinct item from vanilla's insect meat, so the two do not stack together); every yokai-type creature shares the same "radiant hide"/"radiant fur" leather and wool.
+Materials are unified by category: every yokai-type creature except Jorogumo yields human meat; Jorogumo and every ancient-type insect share vanilla's own insect meat (the same real item Megaspiders, Megascarabs, and Spelopedes use, via useMeatFrom) so it stacks with vanilla insect meat too; every yokai-type creature shares the same "radiant hide"/"radiant fur" leather and wool.
 
 All spawn rates, base meat/leather/wool yields, and each creature's adult visual size (drawSize) are consolidated into a single settings sheet (Patches/Patch_CreatureSettings.xml), organized creature-by-creature with Japanese comments - edit the numbers to rebalance, or delete/comment out a creature's whole block to disable its natural spawning entirely (taming/breeding still works).
 

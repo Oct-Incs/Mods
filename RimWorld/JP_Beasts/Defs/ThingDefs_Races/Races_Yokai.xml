@@ -24,7 +24,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -97,7 +97,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -176,7 +176,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -254,7 +254,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -338,7 +338,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -411,7 +411,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -496,7 +496,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>Meat_Human</meatDef>
+      <specificMeatDef>Meat_Human</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -575,7 +575,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <meatDef>JP_Meat_Insect</meatDef>
+      <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>

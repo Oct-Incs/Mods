@@ -466,7 +466,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Meganeura"]/statBases</xpath>
       <value>
-        <MeatAmount>136</MeatAmount>
+        <MeatAmount>272</MeatAmount>
         <LeatherAmount>46</LeatherAmount>
       </value>
     </match>
@@ -510,7 +510,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Titanoptera"]/statBases</xpath>
       <value>
-        <MeatAmount>196</MeatAmount>
+        <MeatAmount>392</MeatAmount>
         <LeatherAmount>66</LeatherAmount>
       </value>
     </match>
@@ -554,7 +554,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Arthropleura"]/statBases</xpath>
       <value>
-        <MeatAmount>196</MeatAmount>
+        <MeatAmount>392</MeatAmount>
         <LeatherAmount>76</LeatherAmount>
       </value>
     </match>
@@ -598,7 +598,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Pulmonoscorpius"]/statBases</xpath>
       <value>
-        <MeatAmount>180</MeatAmount>
+        <MeatAmount>360</MeatAmount>
         <LeatherAmount>66</LeatherAmount>
       </value>
     </match>
@@ -635,7 +635,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Megarachne"]/statBases</xpath>
       <value>
-        <MeatAmount>166</MeatAmount>
+        <MeatAmount>332</MeatAmount>
         <LeatherAmount>54</LeatherAmount>
       </value>
     </match>
@@ -679,7 +679,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Titanomyrma"]/statBases</xpath>
       <value>
-        <MeatAmount>106</MeatAmount>
+        <MeatAmount>212</MeatAmount>
         <LeatherAmount>36</LeatherAmount>
       </value>
     </match>
@@ -730,7 +730,7 @@
     <match Class="PatchOperationAdd">
       <xpath>Defs/ThingDef[defName="JP_Archimylacris"]/statBases</xpath>
       <value>
-        <MeatAmount>60</MeatAmount>
+        <MeatAmount>120</MeatAmount>
         <LeatherAmount>24</LeatherAmount>
       </value>
     </match>

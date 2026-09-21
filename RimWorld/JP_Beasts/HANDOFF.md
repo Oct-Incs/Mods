@@ -579,12 +579,6 @@ item.race.meatDef = thingDef;  // 未設定の種族は "Meat_<defName>" を強�
   狼肉・マンモス肉等) → butcherで実際には一切使われず、死んだデータだった
   可能性が高い
 
-**ユーザーの明示的な指示によりこの時点では修正していない**(「原因がわかったら
-直さずに修正方針を確認しなさい」)。提案した修正方針: 23体全ての`<meatDef>`を
-`<specificMeatDef>`に置き換える(値はそのまま)。**次回、この方針への承認を
-得てから実施すること。承認が得られるまで`Defs/ThingDefs_Races/*.xml`の
-`<meatDef>`/`<specificMeatDef>`関連は一切変更しないこと。**
-
 **教訓(最重要)**: `<meatDef>`は「XMLロードエラーが出ない」＝「正しく機能している」
 ことの証明には全くならない。今回のように、フィールドが実在してもゲーム内部で
 別の実行時ロジックに上書きされるケースがあり、しかも見た目上は正常に動いて
@@ -596,25 +590,102 @@ RaceProperties/ThingDefの新しいフィールドを使う際は、**そのフ�
 別途存在しないかを、必ずデコンパイル済みソース側から辿って確認すること**
 (XMLが読み込めた・エラーが出ない、だけでは全く不十分)。
 
+**修正方針の承認を得て実施済み(ただし`main`へは未マージ、フィーチャーブランチのみ)**。
+実装は当初提案(全23体を`<specificMeatDef>`に統一)から、ユーザーの追加指示
+(「女郎蜘蛛の肉がバニラの虫肉に統合できるなら、本MOD独自の`JP_Meat_Insect`は
+不要なので完全に破棄し、古代昆虫類全体もバニラの虫肉に統合せよ」)を受けて
+一部変更した:
+
+- 妖怪7体(Jorogumo除く): `<specificMeatDef>Meat_Human</specificMeatDef>`
+- 他の獣8体(狼2種・マンモス・マゾタイロス・アダマンタイト・ケナガサイ・
+  オオツノジカ・サーベルタイガー): `<specificMeatDef>JP_Meat_*</specificMeatDef>`
+  (既存の専用アイテムをそのまま指定)
+- **古代昆虫7種+女郎蜘蛛の計8体**: `<specificMeatDef>`ではなく
+  `<useMeatFrom>Megaspider</useMeatFrom>`を採用。理由: バニラの
+  `Megaspider.race.meatLabel`は設定されているが、独立した`Meat_Megaspider`用の
+  DefInjectedラベルエントリが存在しない(`Ludeon/RimWorld-Finnish`の
+  `DefInjected/ThingDef/Races_Animal_Insect.xml`で確認) — これは
+  Megascarab/Spelopedeがバニラ側でも`useMeatFrom`(または同様の仕組み)で
+  Megaspiderから肉を共有しており、実在の独立ThingDefとしての`Meat_Megaspider`
+  ではなく「Megaspiderが自動生成した暗黙アイテムを間接的に共有している」
+  構造だと推測されるため。`specificMeatDef`に文字列で`Meat_Megaspider`と
+  決め打ちするより、`useMeatFrom>Megaspider`でバニラの実際の解決結果を
+  そのまま辿らせる方が将来のバニラ側の変更にも強く、確実。
+- `JP_Meat_Insect`(`Defs/ThingDefs_Items/Meats.xml`)は完全に削除。
+  `About.xml`・`README.md`の関連記述も現状に合わせて修正。
+- 古代昆虫7種(女郎蜘蛛を除く)の`MeatAmount`を現在値から倍増
+  (`Scripts/gen_settings_patch.py`、`LeatherAmount`は変更なし)。
+- `Scripts/validate.py`を更新: `<meatDef>`が`Defs/ThingDefs_Races/*.xml`に
+  一切残っていないことを検査する項目を新設(チェック3b)。今後同じ間違いが
+  紛れ込んでも次のコミット前に機械的に検出できるようにした。
+
+**まだ`main`へはマージしていない(ユーザーの指示により意図的に待機中)。**
+
+### 3.20 関連調査: 革・毛のシステムに同種のバグは無いか/バニラへのテクスチャ混入/産卵未観測との関連
+
+3.19と合わせてユーザーから3点の追加確認依頼があり、いずれもデコンパイル済み
+ソースで裏取りした:
+
+1. **革・毛のシステムに同種のバグがないか**: `RaceProperties.cs`を確認したところ、
+   `leatherDef`(革)には`meatDef`のような`[Unsaved]`属性が付いておらず、
+   **`ThingDefGenerator_Leather`のようなクラス自体がゲーム内に存在しない**
+   (`ThingDefGenerator_*`は実際には`Meat`/`Corpses`/`Buildings`/`Techprints`/
+   `Neurotrainer`の5種類のみ)。`useLeatherFrom`という補助フィールドは存在するが、
+   これは`leatherDef`を明示的に設定していない場合にのみ効く任意の共有手段であり、
+   本MODは全個体で`leatherDef`を直接指定済みなので影響を受けない。`woolDef`は
+   そもそも`RaceProperties`ではなく`CompProperties_Shearable`の直接のフィールド
+   (`CompProperties_Shearable.cs`で確認、`[Unsaved]`属性なし)で、生成・上書き
+   の仕組み自体が存在しない。**結論: 革・毛には同種のバグは存在しない。**
+2. **本MOD用の毛皮テクスチャがバニラ生物(人肉革=Leather_Human等)に適用されて
+   見える件との関連**: 上記の通り革・毛の共有メカニズムは肉のケースと構造が
+   全く異なり(専用の暗黙生成処理が無い)、3.19のバグとは**別系統の問題**である
+   可能性が高い。ソースコード上、本MODのファイル内にも`Leather_Human`への
+   参照は無いことを過去セッションで確認済み(README「トラブルシューティング」
+   参照)。**未解決のまま**。次回、実際に発生している画面のスクリーンショットを
+   もらうこと。
+3. **JP_Beast系モンスターの産卵が一度も観測できていない件との関連**:
+   `CompEggLayer.cs`(産卵の実処理)を確認。`eggFertilizedDef`/`eggUnfertilizedDef`/
+   `eggLayIntervalDays`/`eggCountRange`/`eggFertilizationCountMax`/
+   `eggProgressUnfertilizedMax`は全て`CompProperties_EggLayer`の素直な公開
+   フィールドで、`[Unsaved]`や隠れた上書き処理は存在しない。**3.19のバグとは
+   無関係**と判断できる。ただし`CompEggLayer.Active`の実装:
+   ```csharp
+   if (Props.eggLayFemaleOnly && pawn.gender != Gender.Female) return false;
+   if (!pawn.ageTracker.CurLifeStage.milkable) return false;
+   if (pawn.Sterile()) return false;
+   ```
+   を確認したところ、**`eggLayFemaleOnly`が既定でtrueのため、メス個体しか
+   産卵しない**(現状は狙って明示設定していないだけで不具合ではない)。また、
+   3.12で既に文書化済みの通り**未テイムの野生個体はそもそも繁殖しない**ため、
+   ユーザーが観測していたのがテイム前の野生個体であれば、これは既知のバニラ
+   仕様であってバグではない可能性が高い。**未解決**。次回、実際にテイムした
+   メス個体で、`eggLayIntervalDays`分の日数以上経過を確認した上でまだ産卵が
+   無いかを確認してもらうこと。
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
 要点のみ記す。
 
 - **出現頻度・肉量・革量・毛量・drawSize**: `Scripts/gen_settings_patch.py`の
-  `CREATURES`テーブルが正。3.8参照。肉量・革量は3.16で全23体+20%、さらに3.18で
-  妖怪8体のみ(現在値から)肉×2・革×3・毛×2.5に再引き上げ済み。バニラ動物との
-  比較較正は未完了のまま保留で確定(3.18参照)。
+  `CREATURES`テーブルが正。3.8参照。肉量・革量は3.16で全23体+20%、3.18で
+  妖怪8体のみ(現在値から)肉×2・革×3・毛×2.5、3.19で古代昆虫7種(女郎蜘蛛
+  除く)の肉量をさらに現在値から倍増済み。バニラ動物との比較較正は未完了の
+  まま保留で確定(3.18参照)。
 - **foodType**: 23体中`CarnivoreAnimal`は0体。`VegetarianRoughAnimal`は
   Mammoth/WoollyRhino/IrishElk/Arthropleura/Mazotairosの5体(3.18でMazotairos追加)、
   残り18体は`OmnivoreRoughAnimal`。"Rough"無しの値は生きた植物を食べられない
   (3.17参照)ため、必ず"Rough"付きを使うこと。
 - **女郎蜘蛛**: 唯一の卵生妖怪。繁殖は`CompProperties_EggLayer`(3.18参照、既存
-  最速のアーキミラクリスを上回る頻度・量に設定済み)。
-- **【要修正・未着手】meatDef**: 全23体が`<specificMeatDef>`ではなく効かない
-  `<meatDef>`を使っており、妖怪の人肉共有・虫肉共有・専用肉アイテムのいずれも
-  実際には機能していない可能性が高い(3.19参照)。**ユーザーの修正方針承認が
-  得られるまで着手禁止。**
+  最速のアーキミラクリスを上回る頻度・量に設定済み)。肉は他の古代昆虫7種と
+  同じくバニラの虫肉を`useMeatFrom`で共有(3.19参照)。
+- **meatDef/specificMeatDef/useMeatFrom**: 3.19で全23体`<meatDef>`→
+  `<specificMeatDef>`または`<useMeatFrom>`に修正済み(**フィーチャーブランチ
+  のみ、`main`へは未マージ、ユーザーの指示で意図的に待機中**)。妖怪7体
+  (Jorogumo除く)=`Meat_Human`、獣8体=各専用`JP_Meat_*`、古代昆虫7種+
+  女郎蜘蛛の8体=`useMeatFrom>Megaspider`(バニラの虫肉と共有)。
+  `JP_Meat_Insect`は完全に削除済み。`Scripts/validate.py`に`<meatDef>`の
+  残存を検出するチェックを追加済み(新たにこの間違いをしても検出できる)。
 - **Wildness**: 妖怪+AdamantiteBeast=0.985(Thrumbo相当)、Mammoth+昆虫類=0.96、
   他の古代哺乳類=0.93。3.3参照。
 - **predator**: 全23体`false`。3.6参照(入植者の子供を誤って襲う不具合の
