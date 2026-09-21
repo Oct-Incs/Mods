@@ -161,4 +161,39 @@
     <statBases><MarketValue>2.5</MarketValue><Mass>0.05</Mass></statBases>
   </ThingDef>
 
+  <!-- ================ Jorogumo ================
+       専用の卵画像は用意していないため、同じ蜘蛛型のメガラクネの卵テクスチャを
+       色違い(赤紫)で流用している(JP_Meat_InsectがJP_Meat_JapaneseWolfの
+       テクスチャを色違いで流用しているのと同じパターン)。 -->
+  <ThingDef ParentName="EggFertBase">
+    <defName>JP_Egg_JorogumoFert</defName>
+    <label>jorogumo egg (fert.)</label>
+    <description>女郎蜘蛛の受精卵。他の古代虫よりも一回り大きく、糸のような光沢を帯びる。うまくいけば女郎蜘蛛の幼体が孵化する。\n\nA fertilized jorogumo egg, somewhat larger than other ancient insect eggs and faintly glossy like spun silk. Given time, it should hatch into a young jorogumo.</description>
+    <tradeability>None</tradeability>
+    <statBases><MarketValue>7</MarketValue><Mass>0.22</Mass></statBases>
+    <graphicData>
+      <texPath>Things/Item/Resource/Egg/JP_Egg_Megarachne</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(140, 40, 70)</color>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Hatcher">
+        <hatcherDaystoHatch>2</hatcherDaystoHatch>
+        <hatcherPawn>JP_Jorogumo</hatcherPawn>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef ParentName="EggUnfertBase">
+    <defName>JP_Egg_JorogumoUnfert</defName>
+    <label>jorogumo egg (unfert.)</label>
+    <description>女郎蜘蛛の未受精卵。孵化はしないが、食用・売却用として扱える。\n\nAn unfertilized jorogumo egg. It won't hatch, but can be eaten or sold.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Egg/JP_Egg_Megarachne</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(140, 40, 70)</color>
+    </graphicData>
+    <tradeability>Sellable</tradeability>
+    <statBases><MarketValue>7</MarketValue><Mass>0.22</Mass></statBases>
+  </ThingDef>
+
 </Defs>

@@ -461,17 +461,81 @@ if ((eater.RaceProps.foodType & (FoodTypeFlags.Plant | FoodTypeFlags.Tree)) != F
 **この修正はまだユーザーによるゲーム内確認が取れていない。次回、実際に野草・畑の
 作物・花を食べるようになったか確認すること。**
 
+### 3.18 マゾタイロスの誤分類・女郎蜘蛛の繁殖方式が指示と食い違っていた件(過去に繰り返し指摘されている問題)
+
+3.17の直後、ユーザーから6件の追加指摘があり、そのうち2件は実ファイル確認により
+実際のバグと確定、修正した:
+
+- **マゾタイロス**: `README.md`の設計メモ(注3)に「マゾタイロス=重装甲の草食巨獣」と
+  明記されているにもかかわらず、実際のXMLは`foodType: OmnivoreRoughAnimal`だった。
+  `VegetarianRoughAnimal`に修正。他の22体の食性は、各個体の説明文(捕食者描写の
+  有無)と照らし合わせて確認したが、明確に「草食」と言えるのは元々Vegetarianだった
+  4体(Mammoth/WoollyRhino/IrishElk/Arthropleura)とマゾタイロスの計5体のみ。
+
+- **女郎蜘蛛(重大・4回目の指摘)**: ユーザーが過去(前セッション含め計4回)指示していた
+  「卵生・通常の昆虫より高頻度かつ大量に産卵・肉は昆虫肉」のうち、**繁殖方式(卵生)
+  だけが実装されておらず、`hasGenders`+`gestationPeriodDays`による通常交配(胎生)の
+  ままだった**(`meatDef>JP_Meat_Insect`は指示通り正しく実装済みで、こちらは問題
+  なかった)。`CompProperties_EggLayer`を追加し、既存最速だったアーキミラクリス
+  (`eggLayIntervalDays`1.5日・`eggCountRange`2~5・`eggFertilizationCountMax`3)を
+  上回る値(`eggLayIntervalDays`1日・`eggCountRange`3~6・`eggFertilizationCountMax`4)
+  に設定。卵アイテム`JP_Egg_JorogumoFert`/`Unfert`を`Eggs_Insects.xml`に新規追加
+  (専用テクスチャは用意せず、同じ蜘蛛型のメガラクネの卵画像を色違いで流用 -
+  Textures/を直接編集しないルールに従うため)。
+
+  **なぜ繰り返し見落とされたか**: この手のパラメータ(食性・繁殖方式・肉/革/毛の
+  種類)は個体ごとにXMLブロック内に散らばっており、`grep`や記憶だけで「直したはず」
+  と判断すると、実際には別の項目(今回で言えば`meatDef`)だけ直っていて肝心の項目
+  (繁殖方式)が手つかず、ということが起こる。**今後この種の指示を受けたら、
+  必ず該当defNameのブロック全体を実際に読んでから答えること。「前に直したはず」を
+  過去のチャット履歴の記憶だけで判断しない。**
+
+残り4件は実際に裏取りした上で、下記の通り「確定した事実」と「未解決」を分けて
+ユーザーに報告済み(このHANDOFFの更新時点では未解決分の追加調査待ち):
+
+- **食べる優先順位(雑草>腐乱死体>新鮮死体>肉>収穫済み作物>収穫前作物>調理済み>樹木)**:
+  デコンパイル済み`FoodUtility.cs`の`FoodOptimality()`を確認したところ、スコアは
+  `300 - 距離 + preferabilityによる補正 + 腐敗ボーナス + ムード補正 +
+  foodDef.ingestible.optimalityOffsetFeedingAnimals`で決まる。この
+  `optimalityOffsetFeedingAnimals`は**食料アイテム側のグローバルなフィールド**で
+  あり、「特定の種族だけの優先順位リスト」を持たせる仕組みはバニラに存在しない。
+  ここを弄ると全動物(他MOD・バニラ動物含む)に影響するため、要求通りの
+  「JP_Beastsだけに適用される8段階の優先順位」はXML単体では実装不可能
+  (C#/Harmonyが必要、本MODのXML-only方針に反する)。ユーザーに要相談。
+- **肉・革の産出量がバニラの約半分**: Web検索でバニラの実データ(Timber Wolf:
+  肉119/革36、Elephant:肉560/革160)を確認したが、これらが個別上書き値なのか
+  デフォルト値なのか、また本MODの`statBases`の数値がゲーム内部で体格倍率を
+  追加で掛けられるのか(このスクリプトの前提)を確定できる一次情報(バニラの
+  実際のThingDef XML)には到達できなかった。憶測でさらに倍率を掛けるのは
+  3.11の二の舞になるため保留。**次回、ユーザーに実際にゲーム内で確認した
+  具体的な数値(このMODの個体名+Meat Amount/Leather Amount stat値、および
+  比較対象にしたバニラ動物名+同stat値)を教えてもらい、それを基準に較正すること。**
+- **毛刈りで「毛皮」と表示される件**: `Materials.xml`を確認したところ、
+  `JP_Wool_*`は全て`ParentName="WoolBase"`(`thingCategories`の独自上書きなし)
+  で、ラベルも「剛毛」「輝く毛」「スカイスチール」等、毛皮ではなく毛の名称になって
+  おり、構造上は正しくWool系アイテムとして実装されている(アダマンタイトの
+  `JP_Wool_Adamantite`が実際に「スカイスチール」になっていることも確認済み)。
+  ファイル上の`texPath`が`Textures/.../Leather/`フォルダ配下に置かれている
+  (アセット整理上の命名の乱れ、機能には影響しない)以外に問題は見当たらず、
+  実際に何の画面で「毛皮」と表示されていたか特定できなかった。**次回、
+  スクリーンショットか具体的な画面(毛刈り後のアイテム名/在庫リスト名など)を
+  教えてもらうこと。**
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
 要点のみ記す。
 
 - **出現頻度・肉量・革量・毛量・drawSize**: `Scripts/gen_settings_patch.py`の
-  `CREATURES`テーブルが正。3.8参照。肉量・革量は3.16で全23体+20%済み。
-- **foodType**: 23体中`CarnivoreAnimal`は0体(3.16で全て雑食/草食化)。
-  `VegetarianRoughAnimal`はMammoth/WoollyRhino/IrishElk/Arthropleuraの4体、
-  残り19体は`OmnivoreRoughAnimal`。"Rough"無しの値は生きた植物を食べられない
+  `CREATURES`テーブルが正。3.8参照。肉量・革量は3.16で全23体+20%済みだが、
+  バニラ動物との比較較正がまだ未完了(3.18参照、ユーザーからの実測値待ち)。
+- **foodType**: 23体中`CarnivoreAnimal`は0体。`VegetarianRoughAnimal`は
+  Mammoth/WoollyRhino/IrishElk/Arthropleura/Mazotairosの5体(3.18でMazotairos追加)、
+  残り18体は`OmnivoreRoughAnimal`。"Rough"無しの値は生きた植物を食べられない
   (3.17参照)ため、必ず"Rough"付きを使うこと。
+- **女郎蜘蛛**: 唯一の卵生妖怪。`meatDef`は`JP_Meat_Insect`(虫肉、他の妖怪7体とは
+  別系統)。繁殖は`CompProperties_EggLayer`(3.18参照、既存最速のアーキミラクリスを
+  上回る頻度・量に設定済み)。
 - **Wildness**: 妖怪+AdamantiteBeast=0.985(Thrumbo相当)、Mammoth+昆虫類=0.96、
   他の古代哺乳類=0.93。3.3参照。
 - **predator**: 全23体`false`。3.6参照(入植者の子供を誤って襲う不具合の

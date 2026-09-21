@@ -582,7 +582,7 @@
       <herdAnimal>false</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>
       <hasGenders>true</hasGenders>
-      <gestationPeriodDays>7</gestationPeriodDays>
+      <gestationPeriodDays>1</gestationPeriodDays>
       <lifeExpectancy>25</lifeExpectancy>
       <lifeStageAges>
         <li><def>AnimalBaby</def><minAge>0</minAge></li>
@@ -598,6 +598,18 @@
         <woolDef>JP_Wool_RareSpecies</woolDef>
         <shearIntervalDays>12</shearIntervalDays>
         <woolAmount>24</woolAmount>
+      </li>
+      <!-- 卵生・高頻度・大量産卵(ユーザー指定)。既存最速のアーキミラクリス
+           (間隔1.5日/1回2~5個/最大同時受精3)を上回る値に設定。
+           gestationPeriodDaysは卵生個体でも共通の繁殖判定ゲートに
+           影響する可能性があるため防御的に維持(3.12参照)。 -->
+      <li Class="CompProperties_EggLayer">
+        <eggFertilizedDef>JP_Egg_JorogumoFert</eggFertilizedDef>
+        <eggUnfertilizedDef>JP_Egg_JorogumoUnfert</eggUnfertilizedDef>
+        <eggFertilizationCountMax>4</eggFertilizationCountMax>
+        <eggLayIntervalDays>1</eggLayIntervalDays>
+        <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
+        <eggCountRange>3~6</eggCountRange>
       </li>
     </comps>
     <tools>

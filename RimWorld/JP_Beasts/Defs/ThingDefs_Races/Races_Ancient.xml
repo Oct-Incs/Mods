@@ -285,7 +285,7 @@
       <baseBodySize>2.6</baseBodySize>
       <baseHealthScale>2.6</baseHealthScale>
       <baseHungerRate>1.1</baseHungerRate>
-      <foodType>OmnivoreRoughAnimal</foodType>
+      <foodType>VegetarianRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <meatDef>JP_Meat_Mazotairos</meatDef>
