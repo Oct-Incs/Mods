@@ -16,7 +16,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>0.9</baseBodySize>
       <baseHealthScale>1.0</baseHealthScale>
@@ -24,7 +24,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Nekomata</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -55,14 +55,14 @@
         <capacities><li>Scratch</li></capacities>
         <power>8</power>
         <cooldownTime>1.6</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
       </li>
       <li>
         <label>right claw</label>
         <capacities><li>Scratch</li></capacities>
         <power>8</power>
         <cooldownTime>1.6</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
       </li>
     </tools>
     <graphicData>
@@ -89,7 +89,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>0.85</baseBodySize>
       <baseHealthScale>0.9</baseHealthScale>
@@ -97,7 +97,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Youko</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -128,7 +128,7 @@
         <capacities><li>Scratch</li></capacities>
         <power>7</power>
         <cooldownTime>1.5</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
         <extraMeleeDamages>
           <li><def>Burn</def><amount>4</amount></li>
         </extraMeleeDamages>
@@ -138,7 +138,7 @@
         <capacities><li>Scratch</li></capacities>
         <power>7</power>
         <cooldownTime>1.5</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
         <extraMeleeDamages>
           <li><def>Burn</def><amount>4</amount></li>
         </extraMeleeDamages>
@@ -168,7 +168,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>0.9</baseBodySize>
       <baseHealthScale>1.0</baseHealthScale>
@@ -176,7 +176,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Yukionna</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -207,7 +207,7 @@
         <capacities><li>Scratch</li></capacities>
         <power>7</power>
         <cooldownTime>1.6</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
         <extraMeleeDamages>
           <li><def>Frostbite</def><amount>5</amount></li>
         </extraMeleeDamages>
@@ -217,7 +217,7 @@
         <capacities><li>Scratch</li></capacities>
         <power>7</power>
         <cooldownTime>1.6</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
         <extraMeleeDamages>
           <li><def>Frostbite</def><amount>5</amount></li>
         </extraMeleeDamages>
@@ -246,7 +246,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>0.5</baseBodySize>
       <baseHealthScale>0.6</baseHealthScale>
@@ -254,7 +254,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Zashikiwarashi</specificMeatDef>
       <manhunterOnDamageChance>0.00</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.00</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -294,14 +294,14 @@
         <capacities><li>Blunt</li></capacities>
         <power>3</power>
         <cooldownTime>2.0</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
       </li>
       <li>
         <label>right slap</label>
         <capacities><li>Blunt</li></capacities>
         <power>3</power>
         <cooldownTime>2.0</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
       </li>
     </tools>
     <graphicData>
@@ -330,7 +330,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>1.1</baseBodySize>
       <baseHealthScale>1.2</baseHealthScale>
@@ -338,7 +338,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Tengu</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -369,14 +369,14 @@
         <capacities><li>Scratch</li></capacities>
         <power>9</power>
         <cooldownTime>1.5</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
       </li>
       <li>
         <label>right talon</label>
         <capacities><li>Scratch</li></capacities>
         <power>9</power>
         <cooldownTime>1.5</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
       </li>
     </tools>
     <graphicData>
@@ -403,7 +403,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>1.8</baseBodySize>
       <baseHealthScale>2.0</baseHealthScale>
@@ -411,7 +411,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Oni</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -442,7 +442,7 @@
         <capacities><li>Blunt</li></capacities>
         <power>14</power>
         <cooldownTime>2.0</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
         <surpriseAttack>
           <extraMeleeDamages>
             <li><def>Stun</def><amount>20</amount></li>
@@ -454,7 +454,7 @@
         <capacities><li>Blunt</li></capacities>
         <power>14</power>
         <cooldownTime>2.0</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
         <surpriseAttack>
           <extraMeleeDamages>
             <li><def>Stun</def><amount>20</amount></li>
@@ -488,7 +488,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>1.6</baseBodySize>
       <baseHealthScale>2.2</baseHealthScale>
@@ -496,7 +496,7 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <predator>false</predator>
       <leatherDef>JP_Leather_RareSpecies</leatherDef>
-      <specificMeatDef>Meat_Human</specificMeatDef>
+      <specificMeatDef>JP_Meat_Dragonkin</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
@@ -527,7 +527,7 @@
         <capacities><li>Scratch</li></capacities>
         <power>12</power>
         <cooldownTime>1.9</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
         <extraMeleeDamages>
           <li><def>Burn</def><amount>5</amount></li>
         </extraMeleeDamages>
@@ -537,7 +537,7 @@
         <capacities><li>Scratch</li></capacities>
         <power>12</power>
         <cooldownTime>1.9</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
         <extraMeleeDamages>
           <li><def>Burn</def><amount>5</amount></li>
         </extraMeleeDamages>
@@ -567,7 +567,7 @@
       <Wildness>0.985</Wildness>
     </statBases>
     <race>
-      <body>Human</body>
+      <body>QuadrupedAnimalWithPawsAndTail</body>
       <intelligence>Animal</intelligence>
       <baseBodySize>0.95</baseBodySize>
       <baseHealthScale>1.0</baseHealthScale>
@@ -630,14 +630,14 @@
         <capacities><li>Scratch</li></capacities>
         <power>6</power>
         <cooldownTime>1.6</cooldownTime>
-        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
       </li>
       <li>
         <label>right claw</label>
         <capacities><li>Scratch</li></capacities>
         <power>6</power>
         <cooldownTime>1.6</cooldownTime>
-        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
       </li>
     </tools>
     <graphicData>

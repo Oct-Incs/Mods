@@ -749,6 +749,61 @@ origin/main`で最新状態を確認してから始めるべきだった。READM
    この結果が出れば、「yokai特有(body=Human+intelligence=Animal)」説と
    「JP_Beastsの大型/特殊ポーン全般」説を明確に区別できる。
 
+### 3.22 妖怪8体の body=Human+intelligence=Animal 組み合わせを撤廃(3.21のCharacterEditorクラッシュ調査を受けた予防的修正)
+
+ユーザー指示(2026-10-11、原文): 「JP_Beasts全23体のうち、妖怪8体(ネコマタ・
+妖狐・雪女・座敷童・天狗・鬼・龍種・女郎蜘蛛)が使っているbody=Human(人型
+ボディ)+intelligence=Animal(知能は動物扱い)という、他に類を見ない組み合わ
+せをやめます。肉の設定は明確に、古代昆虫と女郎蜘蛛からは虫肉だけ(ボディを
+虫に設定)、それ以外からは高価値な個別の肉が取れる仕様(哺乳類)に変更して、
+想定外のエラーを回避。」
+
+**背景・動機**: 3.21で、CharacterEditor併用時のみ発生するセーブ読み込み
+クラッシュについて、「妖怪8体のbody=Human+intelligence=Animalという組み合
+わせがCharacterEditorの描画処理(IdeoTracker/Capturer経由)を異常状態に導い
+ている」という仮説まで絞り込めていた。本件はその仮説を検証する前に、問題の
+組み合わせ自体を撤廃して予防的に解消する対応。これにより3.21で提案していた
+「妖怪8体のXMLを一時無効化して再現するか切り分ける」手順は不要になった
+(原因候補そのものを除去するため)。なお、この変更で実際にcrashが解消する
+かどうかはユーザーの実機検証待ち(CharacterEditor併用環境での再テストが
+必要)。
+
+**実装内容**(`Defs/ThingDefs_Races/Races_Yokai.xml`、Pythonスクリプトで
+8体一括変更、`validate.py`で検証済み):
+
+1. **body**: 全8体で`<body>Human</body>` → `<body>QuadrupedAnimalWithPawsAndTail
+   </body>`(他15体の古代種と同じ、実績のあるbody)に変更。
+2. **tools の bodyPartGroup**: `Human`ボディ用の`LeftHand`/`RightHand`を
+   `QuadrupedAnimalWithPawsAndTail`ボディ用の`FrontLeftPaw`/`FrontRightPaw`に
+   全箇所置換(Teeth系のtool、例: 女郎蜘蛛の牙はそのまま変更不要)。
+3. **肉(meat)**:
+   - **女郎蜘蛛**: 既に3.19で`<useMeatFrom>Megaspider</useMeatFrom>`(バニラの
+     虫肉と共有)になっていたため変更不要。bodyが虫型になったことで、肉だけ
+     でなく見た目・ボディ構造もようやく整合する形になった。
+   - **残り7体(ネコマタ/妖狐/雪女/座敷童/天狗/鬼人/竜人)**: これまでの
+     `<specificMeatDef>Meat_Human</specificMeatDef>`(バニラ人肉の流用)を
+     廃止し、各自専用の新規肉アイテム`JP_Meat_Nekomata`/`JP_Meat_Youko`/
+     `JP_Meat_Yukionna`/`JP_Meat_Zashikiwarashi`/`JP_Meat_Tengu`/`JP_Meat_Oni`/
+     `JP_Meat_Dragonkin`を新設し、`<specificMeatDef>`で個別に指定するよう変更
+     (`Defs/ThingDefs_Items/Meats.xml`に7件追加)。人肉よりも価値の高い高級肉
+     という位置づけ(MarketValue 4.0〜6.0、バニラのMeat_Human=1.0やMeat_Human
+     より明確に高価)。**CLAUDE.mdの「Texturesに触れない」ルールを厳守**し、
+     新規テクスチャは一切作成せず、既存の`JP_Meat_*`系テクスチャ(他の古代
+     獣用)を色調(`<color>`タグ)だけ変えて再利用した(例: Nekomata→
+     EzoWolfの肉テクスチャを流用、色のみ変更)。
+4. **intelligence**: `Animal`のまま変更なし(ユーザー指示は
+   body=Human+intelligence=Animalの「組み合わせ」の撤廃であり、
+   intelligence=Animal自体は他15体とも共通の仕様のため)。
+
+**ドキュメント更新**: README.md(妖怪タイプの見出し・表・卵生/肉の節・冒頭の
+MOD概要)、About.xml(MOD概要・肉の統一説明)の「人型」「Meat_Human」関連の
+記述を全て現在の仕様に合わせて更新済み。HANDOFF.md本体の過去ログ(3.9/3.18/
+3.19/3.21等)は履歴として当時の状態の記録のため、そのまま保持(書き換えない)。
+
+**検証**: `python3 Scripts/validate.py`で全チェック通過(XML整形・
+specificMeatDefの参照整合性・texPath解決・meatDef残存なし・Shearable数
+一致)。
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
@@ -765,12 +820,18 @@ origin/main`で最新状態を確認してから始めるべきだった。READM
   (3.17参照)ため、必ず"Rough"付きを使うこと。
 - **女郎蜘蛛**: 唯一の卵生妖怪。繁殖は`CompProperties_EggLayer`(3.18参照、既存
   最速のアーキミラクリスを上回る頻度・量に設定済み)。肉は他の古代昆虫7種と
-  同じくバニラの虫肉を`useMeatFrom`で共有(3.19参照)。
+  同じくバニラの虫肉を`useMeatFrom`で共有(3.19参照)。3.22でbodyも
+  `QuadrupedAnimalWithPawsAndTail`(他の古代昆虫と同じ虫型)に変更済みで、
+  見た目・肉の両面で古代昆虫7種と完全に同系統になった。
+- **妖怪8体のbody**: 3.22で全8体`<body>Human</body>` →
+  `<body>QuadrupedAnimalWithPawsAndTail</body>`に変更済み(他15体の古代種と
+  同じ、実績のあるbody)。`intelligence`は引き続き`Animal`のまま。
+  body=Human+intelligence=Animalという特異な組み合わせはMOD内に存在しない。
 - **meatDef/specificMeatDef/useMeatFrom**: 3.19で全23体`<meatDef>`→
-  `<specificMeatDef>`または`<useMeatFrom>`に修正済み(**フィーチャーブランチ
-  のみ、`main`へは未マージ、ユーザーの指示で意図的に待機中**)。妖怪7体
-  (Jorogumo除く)=`Meat_Human`、獣8体=各専用`JP_Meat_*`、古代昆虫7種+
-  女郎蜘蛛の8体=`useMeatFrom>Megaspider`(バニラの虫肉と共有)。
+  `<specificMeatDef>`または`<useMeatFrom>`に修正済み。妖怪7体(Jorogumo除く)
+  は3.22で`Meat_Human`流用を廃止し、各自専用の新規`JP_Meat_*`に変更済み。
+  獣8体=各専用`JP_Meat_*`、古代昆虫7種+女郎蜘蛛の8体=
+  `useMeatFrom>Megaspider`(バニラの虫肉と共有)。
   `JP_Meat_Insect`は完全に削除済み。`Scripts/validate.py`に`<meatDef>`の
   残存を検出するチェックを追加済み(新たにこの間違いをしても検出できる)。
 - **Wildness**: 妖怪+AdamantiteBeast=0.985(Thrumbo相当)、Mammoth+昆虫類=0.96、
@@ -783,10 +844,10 @@ origin/main`で最新状態を確認してから始めるべきだった。READM
 - **manhunterOnTameFailChance** (テイム失敗時反撃): Tier A=0%、Tier B=12%、
   Tier C=28%。3.7参照。
 - **肉アイテムの種類**: 妖怪7体(Nekomata/Youko/Yukionna/Zashikiwarashi/
-  Tengu/Oni/Dragonkin)=`Meat_Human`(バニラ実在アイテム)。虫系8体
-  (古代昆虫7種+Jorogumo)=`JP_Meat_Insect`(このMOD独自の共有アイテム、
-  `Defs/ThingDefs_Items/Meats.xml`)。他の古代獣は各自専用の`JP_Meat_*`。
-  3.9〜3.11参照。
+  Tengu/Oni/Dragonkin)=各自専用の新規`JP_Meat_*`(高級肉、3.22で`Meat_Human`
+  流用から変更)。虫系8体(古代昆虫7種+Jorogumo)=バニラの虫肉を
+  `useMeatFrom>Megaspider`で共有(`JP_Meat_Insect`は3.19で完全に廃止済み)。
+  他の古代獣は各自専用の`JP_Meat_*`。3.9〜3.11、3.19、3.22参照。
 - **gestationPeriodDays / eggLayIntervalDays**: 3.12・3.13参照。値は
   `Defs/ThingDefs_Races/*.xml` に直接記載。eggLayIntervalDaysは3.16で
   卵生8体を約20%短縮済み。
@@ -805,7 +866,7 @@ RimWorld/JP_Beasts/
       Races_AncientMammals.xml    古代哺乳類3体(ケナガサイ+オオツノジカ+サーベルタイガー)
       Races_Insects.xml           古代昆虫5体(アースロプレウラ+プルモノスコルピウス+メガラクネ+タイタノミルマ+アーキミラクリス)
     ThingDefs_Items/
-      Meats.xml                   各種専用肉アイテム + 共有JP_Meat_Insect
+      Meats.xml                   各種専用肉アイテム(妖怪7体の新規JP_Meat_*含む)
       Eggs.xml / Eggs_Insects.xml 卵アイテム(Hatcher comp)
       (その他: 革・毛・素材アイテム)
     PawnKindDefs/                 PawnKindDef (ライフステージのdrawSize等)
@@ -849,9 +910,13 @@ RimWorld/JP_Beasts/
   括弧まで含める)に変更し、実際の毛刈り個体ブロックのコメントだけを
   拾うよう修正した結果、16 vs 16で一致することを確認した(2026-09-18)。
 - **3.21のCharacterEditorクラッシュ**: CharacterEditor×JP_Beastsの相互作用
-  バグと確定済み(片方だけ無効化すれば再現しない)。次回、妖怪8体のみを
-  切り分けるテスト(3.21記載の手順a/b)をユーザーに依頼し、yokai
-  (body=Human+intelligence=Animal)が引き金かを確定すること。
+  バグと確定済み(片方だけ無効化すれば再現しない)。3.22で最有力候補だった
+  妖怪8体のbody=Human+intelligence=Animalの組み合わせ自体を撤廃済みのため、
+  3.21で提案していた妖怪のみを切り分けるテストはもはや不要。**次回、
+  CharacterEditor併用環境でこの修正適用後にクラッシュが再現するか
+  どうかをユーザーに確認してもらうこと**(再現しなくなれば仮説が
+  裏付けられる。再現する場合は別の原因(大型/特殊ポーン全般など)を
+  改めて調査する必要がある)。
 - **3.21で追加したdessicatedBodyGraphicData**: 現状は各個体自身の生存時の
   テクスチャを流用した暫定対応。専用の白骨化アートが用意されたら、
   対応する`texPath`のみ差し替えること(数値パラメータの変更なので

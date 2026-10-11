@@ -263,4 +263,241 @@
     </thingCategories>
   </ThingDef>
 
+  <!-- 妖怪7体(女郎蜘蛛を除く)専用の肉。以前はバニラのMeat_Human(人肉)を
+       共有していたが、body=Human+intelligence=Animalという組み合わせ自体を
+       やめ(他の獣・昆虫と同じQuadrupedAnimalWithPawsAndTailボディに統一)、
+       それに合わせて肉も「妖怪の高級肉」として各個体専用アイテム化した。
+       専用テクスチャは用意していないため、既存の獣肉テクスチャを色違いで
+       流用している(このMODで繰り返し使っているパターンと同じ)。 -->
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Nekomata</defName>
+    <label>nekomata meat</label>
+    <description>猫又の肉。妖力の名残か、ほのかに芳しい香りを放つ上質な肉。\n\nMeat from a nekomata. Possibly a lingering trace of its supernatural power, it carries a faint, fragrant aroma and is of fine quality.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_EzoWolf</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(150, 90, 100)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>4.5</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>4</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Youko</defName>
+    <label>youko meat</label>
+    <description>妖狐の肉。わずかに焼けたような香ばしさがある、妖気を帯びた上質な肉。\n\nMeat from a youko. Carrying a faint smoky, toasted aroma and a trace of supernatural energy, it is of fine quality.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_JapaneseWolf</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(190, 110, 50)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>4.5</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>4</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Yukionna</defName>
+    <label>yukionna meat</label>
+    <description>雪女の肉。不思議と冷たいままいつまでも傷みにくい、上質な肉。\n\nMeat from a yukionna. Strangely, it stays cold and resists spoiling far longer than it should - meat of fine quality.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_WoollyRhino</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(195, 215, 225)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>4.5</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>6</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Zashikiwarashi</defName>
+    <label>zashikiwarashi meat</label>
+    <description>座敷童の肉。小ぶりだが柔らかく上質で、不思議と縁起が良いとされる。\n\nMeat from a zashikiwarashi. Small in quantity but tender and of fine quality, said to bring good fortune to whoever eats it.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_Mammoth</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(230, 190, 170)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>4.0</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>4</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Tengu</defName>
+    <label>tengu meat</label>
+    <description>天狗の肉。山の霊気を宿すとされる、引き締まった上質な肉。\n\nMeat from a tengu, said to carry the spiritual energy of the sacred mountains. Lean and of fine quality.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_IrishElk</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(140, 60, 70)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>5.0</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>4</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Oni</defName>
+    <label>oni meat</label>
+    <description>鬼人の肉。赤黒く分厚いが、怪力の源か驚くほど上質で滋養に富む。\n\nMeat from an oni. Dark red and thick-cut, yet surprisingly fine and nourishing - perhaps the very source of its monstrous strength.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_Smilodon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(110, 40, 40)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>5.5</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>5</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="OrganicProductBase">
+    <defName>JP_Meat_Dragonkin</defName>
+    <label>dragonkin meat</label>
+    <description>竜人の肉。竜の血を引くというだけあって、ほのかに熱を帯びた極上の肉。\n\nMeat from a dragonkin. Carrying the blood of dragons, it is faintly warm to the touch and of the finest quality.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Meat/JP_Meat_Mazotairos</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(60, 120, 80)</color>
+    </graphicData>
+    <statBases>
+      <Nutrition>0.05</Nutrition>
+      <Flammability>0.5</Flammability>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+      <Mass>0.05</Mass>
+      <MarketValue>6.0</MarketValue>
+    </statBases>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>DesperateOnly</preferability>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>6</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+  </ThingDef>
+
 </Defs>
