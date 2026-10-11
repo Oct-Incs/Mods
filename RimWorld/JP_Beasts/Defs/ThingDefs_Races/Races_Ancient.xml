@@ -14,7 +14,7 @@
       <ComfyTemperatureMin>-30</ComfyTemperatureMin>
       <ComfyTemperatureMax>28</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
-      <Wildness>0.6</Wildness>
+      <Wildness>0.5</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -101,7 +101,7 @@
       <ComfyTemperatureMin>-40</ComfyTemperatureMin>
       <ComfyTemperatureMax>25</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.07</ArmorRating_Sharp>
-      <Wildness>0.6</Wildness>
+      <Wildness>0.5</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -189,7 +189,7 @@
       <ComfyTemperatureMax>25</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.10</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
-      <Wildness>0.75</Wildness>
+      <Wildness>0.65</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -278,7 +278,7 @@
       <ComfyTemperatureMax>40</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.35</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.30</ArmorRating_Blunt>
-      <Wildness>0.6</Wildness>
+      <Wildness>0.5</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -367,7 +367,7 @@
       <ArmorRating_Sharp>0.55</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.45</ArmorRating_Blunt>
       <ArmorRating_Heat>0.35</ArmorRating_Heat>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -461,7 +461,7 @@
       <MoveSpeed>6.5</MoveSpeed>
       <ComfyTemperatureMin>0</ComfyTemperatureMin>
       <ComfyTemperatureMax>45</ComfyTemperatureMax>
-      <Wildness>0.75</Wildness>
+      <Wildness>0.65</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -544,7 +544,7 @@
       <ComfyTemperatureMin>-10</ComfyTemperatureMin>
       <ComfyTemperatureMax>45</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
-      <Wildness>0.75</Wildness>
+      <Wildness>0.65</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>

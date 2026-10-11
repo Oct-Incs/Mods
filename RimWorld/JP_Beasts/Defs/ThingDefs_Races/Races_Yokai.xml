@@ -13,7 +13,7 @@
       <ComfyTemperatureMin>-20</ComfyTemperatureMin>
       <ComfyTemperatureMax>35</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -86,7 +86,7 @@
       <ComfyTemperatureMax>45</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
       <ArmorRating_Heat>0.35</ArmorRating_Heat>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -165,7 +165,7 @@
       <ComfyTemperatureMax>18</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
       <ArmorRating_Heat>-0.20</ArmorRating_Heat>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -243,7 +243,7 @@
       <MoveSpeed>5.0</MoveSpeed>
       <ComfyTemperatureMin>-20</ComfyTemperatureMin>
       <ComfyTemperatureMax>35</ComfyTemperatureMax>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -327,7 +327,7 @@
       <ComfyTemperatureMax>35</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
       <PsychicSensitivity>1.5</PsychicSensitivity>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -400,7 +400,7 @@
       <ComfyTemperatureMax>38</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.20</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -485,7 +485,7 @@
       <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
       <ArmorRating_Heat>0.50</ArmorRating_Heat>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -564,7 +564,7 @@
       <ComfyTemperatureMin>-10</ComfyTemperatureMin>
       <ComfyTemperatureMax>40</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.10</ArmorRating_Sharp>
-      <Wildness>0.9</Wildness>
+      <Wildness>0.65</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
