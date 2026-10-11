@@ -704,7 +704,8 @@ origin/main`で最新状態を確認してから始めるべきだった。READM
    「Texturesに触れない」ルールに従い、今回は既存ファイルの参照のみで、
    画像ファイル自体は一切作成・変更していない)。
 
-2. **CharacterEditor連携のクラッシュ(未確定・継続調査が必要)**: 提供された
+2. **CharacterEditor連携のクラッシュ(「両MOD同時有効時のみ発生」の相互作用
+   バグと確定・トリガーの絞り込みは継続調査中)**: 提供された
    クラッシュログのスタックトレースを確認。セーブ読み込み中
    (`Verse.SavedGameLoaderNow:LoadGameFromSaveFileNow`)に、何らかのポーンの
    `Pawn_IdeoTracker.ExposeData` → `get_Certainty` → `Pawn.DevelopmentalStage`
@@ -712,27 +713,41 @@ origin/main`で最新状態を確認してから始めるべきだった。READM
    パッチ経由で)`CharacterEditor.CEditor.OnRecalcIndex` →
    `CharacterEditor.Capturer.Render` → `UnityEngine.Camera.Render`という
    経路で、ログに直前に出ている`Graphics device is null.`の状態のまま
-   ネイティブクラッシュしている。つまり**クラッシュの直接の発生源は
-   CharacterEditor MOD自身のポートレート描画処理内**であり、本MODのC#
-   コード(そもそも存在しない)が直接クラッシュさせているわけではない。
+   ネイティブクラッシュしている。
    疑わしい点として、このMODの妖怪8体は`body=Human`(人型ボディ)+
    `intelligence=Animal`という、他のMOD含め全体のmodlist中でも珍しい組み
    合わせを使っており、CharacterEditorの描画処理がこの組み合わせを
    「完全な人間ポーン」と誤認して通常ありえない状態(IdeoTracker関連の
-   処理など)に入り込んでいる可能性があるが、**これは未確認の仮説に留まる**
-   (クラッシュスタックにはどのポーンかの情報が無く、人間コロニストでも
-   同じ経路を辿る可能性があるため、本MOD特有のバグなのか、CharacterEditor
-   単体の既知の非同期スレッド描画バグなのか、ログだけでは断定できない)。
-   なお本MODの履歴には、この全く同じ`CharacterEditor.Capturer`描画クラッシュ
-   が3.4の調査中にも一度疑われており(当時はMammoth/AdamantiteBeastの
-   drawSizeを6.8/6.0→5.78/5.1に下げる対応をしたが、実際の原因は別
-   (wildAnimalsのXML形式ミス)だったと判明している)。両者が無関係の
-   偶然である可能性も、何らかの形で関連している可能性も両方残っている。
-   **次に取るべき具体的な切り分け手順(ユーザーに依頼すること)**:
-   CharacterEditorを一時的に無効化した状態で同じセーブファイルの読み込みを
-   再現し、クラッシュが起こらなくなるかを確認してもらう。起こらなくなれば
-   CharacterEditor側(またはその連携)の問題と確定でき、依然発生するなら
-   本MOD以外の原因を疑う必要がある。
+   処理など)に入り込んでいる可能性がある、という仮説を立てた。
+
+   **切り分けテスト結果(ユーザー報告・2026-10-11)**: 「CharacterEditorを
+   一時的に無効化した状態」と「JP_Beastsを無効化した状態」の両方を個別に
+   試したところ、**どちらの場合もクラッシュは発生しなかった**。これは
+   重要な確定事実で、**CharacterEditor単体の既知バグでもJP_Beasts単体の
+   バグでもなく、両MODが同時に有効な場合にのみ発生する相互作用バグ**で
+   あることを意味する(片方を外すだけで再現しなくなる = 両方の存在が
+   必要条件)。「本MOD特有のバグなのか、CharacterEditor単体の非同期描画
+   バグなのか断定できない」という従来の留保は解消され、**JP_Beastsの
+   コンテンツ(具体的には妖怪の body=Human+intelligence=Animal の組み合わせ
+   が最有力候補)がCharacterEditor側の処理を異常状態に導いている**という
+   線まで絞り込めた。なお3.4調査時に一度疑われた同じ
+   `CharacterEditor.Capturer`描画クラッシュ(当時はdrawSize変更で対応したが
+   実際の原因はwildAnimalsのXML形式ミスだった)との関連は依然不明。
+
+   **さらなる絞り込みのため、次にユーザーに依頼すべき切り分け手順**:
+   「妖怪8体(body=Human+intelligence=Animal)」と「残り15体(通常の
+   body=Quadruped等+intelligence=Animal)」のどちらが引き金かを分離する
+   ため、以下のいずれかを試してもらう。
+     a) 妖怪8体のXMLファイル(`Races_Yokai.xml`、`PawnKinds_Monsters.xml`
+        内の妖怪分)だけを一時的に無効化/削除した状態でクラッシュが
+        再現するか(再現しなければ妖怪が原因と確定)。
+     b) もし(a)が手間なら、代わりにセーブデータの中にそもそも妖怪
+        (Nekomata/Youko/Yukionna/Zashikiwarashi/Tengu/Oni/Dragonkin/
+        Jorogumo)が1体も存在しない状態(マップに出現していない save)
+        で同じ操作をしてもクラッシュするかどうかを確認する(妖怪個体の
+        存在自体が引き金なら、出現していなければ再現しないはず)。
+   この結果が出れば、「yokai特有(body=Human+intelligence=Animal)」説と
+   「JP_Beastsの大型/特殊ポーン全般」説を明確に区別できる。
 
 ## 4. 現在の各パラメータの状態 (要点)
 
@@ -833,9 +848,10 @@ RimWorld/JP_Beasts/
   されていたため恒常的に+1されていた。検索文字列を「基本毛量(」(直後の
   括弧まで含める)に変更し、実際の毛刈り個体ブロックのコメントだけを
   拾うよう修正した結果、16 vs 16で一致することを確認した(2026-09-18)。
-- **3.21のCharacterEditorクラッシュ**: 本MODが直接の原因かどうか未確定。
-  次回、ユーザーにCharacterEditorを一時的に無効化した状態での再現テストを
-  依頼し、結果次第で本格調査するか様子見するかを判断すること。
+- **3.21のCharacterEditorクラッシュ**: CharacterEditor×JP_Beastsの相互作用
+  バグと確定済み(片方だけ無効化すれば再現しない)。次回、妖怪8体のみを
+  切り分けるテスト(3.21記載の手順a/b)をユーザーに依頼し、yokai
+  (body=Human+intelligence=Animal)が引き金かを確定すること。
 - **3.21で追加したdessicatedBodyGraphicData**: 現状は各個体自身の生存時の
   テクスチャを流用した暫定対応。専用の白骨化アートが用意されたら、
   対応する`texPath`のみ差し替えること(数値パラメータの変更なので
