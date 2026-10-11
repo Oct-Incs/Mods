@@ -15,7 +15,7 @@
       <ComfyTemperatureMax>40</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.40</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
-      <Wildness>0.96</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -27,7 +27,7 @@
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>1.0</manhunterOnDamageChance>
-      <manhunterOnTameFailChance>0.28</manhunterOnTameFailChance>
+      <manhunterOnTameFailChance>0.18</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
       <herdAnimal>false</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>
@@ -105,7 +105,7 @@
       <ComfyTemperatureMin>-5</ComfyTemperatureMin>
       <ComfyTemperatureMax>48</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
-      <Wildness>0.96</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -117,7 +117,7 @@
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>1.0</manhunterOnDamageChance>
-      <manhunterOnTameFailChance>0.28</manhunterOnTameFailChance>
+      <manhunterOnTameFailChance>0.18</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
       <herdAnimal>false</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>
@@ -198,7 +198,7 @@
       <ComfyTemperatureMin>-5</ComfyTemperatureMin>
       <ComfyTemperatureMax>42</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.10</ArmorRating_Sharp>
-      <Wildness>0.96</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -210,7 +210,7 @@
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
-      <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
+      <manhunterOnTameFailChance>0.08</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
       <herdAnimal>false</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>
@@ -288,7 +288,7 @@
       <ComfyTemperatureMin>0</ComfyTemperatureMin>
       <ComfyTemperatureMax>45</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.10</ArmorRating_Sharp>
-      <Wildness>0.96</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -300,7 +300,7 @@
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
-      <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
+      <manhunterOnTameFailChance>0.08</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
       <herdAnimal>true</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>
@@ -362,7 +362,7 @@
       <MoveSpeed>6.0</MoveSpeed>
       <ComfyTemperatureMin>-5</ComfyTemperatureMin>
       <ComfyTemperatureMax>45</ComfyTemperatureMax>
-      <Wildness>0.96</Wildness>
+      <Wildness>0.75</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -374,7 +374,7 @@
       <leatherDef>JP_Chitin_Ancient</leatherDef>
       <useMeatFrom>Megaspider</useMeatFrom>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
-      <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
+      <manhunterOnTameFailChance>0.08</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
       <herdAnimal>false</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>

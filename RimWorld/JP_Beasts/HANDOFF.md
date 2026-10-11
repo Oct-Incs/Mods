@@ -804,6 +804,81 @@ MOD概要)、About.xml(MOD概要・肉の統一説明)の「人型」「Meat_Hum
 specificMeatDefの参照整合性・texPath解決・meatDef残存なし・Shearable数
 一致)。
 
+### 3.23 テイム難易度が高すぎて失敗・マンハンター化が頻発する件(Wildnessがバニラ最難関のThrumboより高かった)
+
+ユーザー報告(2026-10-11、原文): 「このMODのモンスターは飼いならしの難易度が
+高すぎるせいか、飼いならしに失敗して定期的に野生化してしまいます。原因を
+調査・推測し、難易度を下げるなどの対処をしてください。」
+
+**調査**: テイム成功率の計算式をデコンパイル済みソース(1.6対応の
+`Dyyrlysh/RimworldDecompile`、`RimWorld/InteractionWorker_RecruitAttempt.cs`)
+で確認したところ、以下の通り:
+```csharp
+num2 = initiator.GetStatValue(StatDefOf.TameAnimalChance);   // ハンドラー側の基礎値(Animalsスキル依存)
+float statValue = recipient.GetStatValue(StatDefOf.Wildness);
+num2 *= TameChanceFactorCurve_Wildness.Evaluate(statValue);  // Wildnessによる倍率
+```
+`TameChanceFactorCurve_Wildness`は`(0, 2), (0.5, 1), (1, 0)`の3点から成る直線
+(=`2*(1-Wildness)`という単純な一次式)。つまりWildnessが1.0に近いほど、
+ハンドラーの基礎テイム成功率にかける倍率が急激に0へ近づく。
+
+RimWorld Wikiで確認したバニラの参考値: Thrumbo(バニラでCore収録生物の中で
+最もテイムが難しい)= Wildness **0.98**(Royaltyの亜種Alpha Thrumboでも
+最大0.99前後)。Timber Wolf(バニラで「テイムしづらい」の代表格)=
+Wildness 0.85。Horse = 0.35。Cat/Cow/Sheep = 0(簡単)。
+
+**根本原因確定**: 本MODの実際の値(3.3で設計済み)は、
+妖怪8体+AdamantiteBeast(9体)=**0.985**、Mammoth+古代昆虫7種(8体)=
+**0.96**、他の古代哺乳類6体=**0.93**。つまり**23体全てが、バニラのCore内で
+最もテイムが難しい唯一の生物(Thrumbo, 0.98)と同等かそれ以上**という
+設計になっていた。倍率`2*(1-Wildness)`で計算すると、妖怪ティアは
+たった**約3%**(Thrumboの約4%よりさらに低い)、Mammoth/昆虫ティアは
+約8%、他の古代哺乳類ティアも約14%しかハンドラーの基礎成功率にかからない。
+3.3の時点で「妖怪+AdamantiteBeast=バニラThrumbo相当」という設計意図
+自体は正しく実現されていたが、それを**23体全種(=MODの全生物)**に
+適用してしまったため、「レアな1体だけ激ムズ」ではなく「このMODの生物は
+全部バニラ最難関級」という状態になり、プレイヤーがテイムを試みるたびに
+高確率で失敗していた。さらにTier B/C(15体)には
+`manhunterOnTameFailChance`(テイム失敗時に一時的にマンハンター化する
+確率)が12%/28%設定されているため、ほぼ毎回失敗する状況下でこの確率が
+繰り返し判定され、結果として「テイムに失敗して定期的に野生化(マンハンター
+化)する」という体感に繋がっていたと推測される。
+
+**対処**(ユーザーの「難易度を下げる対処をしてほしい」という指示に基づき、
+相対的な難易度の序列(妖怪>大型古代種>他の古代哺乳類)は維持したまま、
+バニラの実際の難易度レンジ内に収まるよう全体を圧縮):
+
+| ティア | 対象(数) | Wildness (旧→新) | 倍率(旧→新) | manhunterOnTameFailChance (旧→新) |
+|---|---|---|---|---|
+| 妖怪8体+Adamantite | 9体 | 0.985→**0.9** | 約3%→約20% | (Tier A=0%のまま/Tier B 12%→**8%**/Adamantite 28%→**18%**) |
+| Mammoth+古代昆虫7種 | 8体 | 0.96→**0.75** | 約8%→約50% | 0%/12%→8%/28%→18%(種により異なる、下記参照) |
+| 他の古代哺乳類6体(狼2+ケナガサイ+オオツノジカ+マゾタイロス+サーベルタイガー) | 6体 | 0.93→**0.6** | 約14%→約80% | 0%/12%→8% |
+
+新しい最高値(0.9)は、バニラのCore最難関(Thrumbo 0.98)より明確に
+低く設定した。これにより「本MODの生物がバニラの最難関生物より
+テイムしづらい」という状態は解消される。`manhunterOnTameFailChance`も
+Tier B(12%→8%)・Tier C(28%→18%)を引き下げ、テイム失敗自体が
+減ることに加えて失敗時のマンハンター化率も下げた(Tier A=0%は変更なし)。
+`manhunterOnDamageChance`(被弾時反撃、3.5/3.6参照)は本件の報告内容
+(テイム失敗絡み)とは別の挙動のため、今回は変更していない。
+
+**実装**: `Defs/ThingDefs_Races/*.xml`の該当`<Wildness>`/
+`<manhunterOnTameFailChance>`タグをsedで一括置換(値が重複する他の
+タグと衝突しないことを事前にgrepで確認済み)。`trainability`
+(`Intermediate`)は変更なし(テイム成功率には影響しない、トレーニング内容
+を決めるフィールドのため)。
+
+**検証**: `python3 Scripts/validate.py`で全チェック通過。新しい23体分の
+Wildness/manhunterOnTameFailChanceの値を手動grepで個体ごとに再確認し、
+意図した3ティアに正しく収まっていることを確認済み。
+
+**留保事項**: ハンドラー側の基礎`TameAnimalChance`(Animalsスキル依存の
+バニラStatDef、本MOD側では変更不可)自体が低い場合、上記の改善後も
+序盤(Animalsスキルが低い入植者)では引き続き失敗しやすい可能性がある。
+これはバニラの仕様であり本MODの設計範囲外のため、もし改善後も
+「テイムが難しすぎる」という報告が続く場合は、Wildnessのさらなる
+引き下げ(例: 0.9→0.8等)を検討する。
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
@@ -834,15 +909,19 @@ specificMeatDefの参照整合性・texPath解決・meatDef残存なし・Sheara
   `useMeatFrom>Megaspider`(バニラの虫肉と共有)。
   `JP_Meat_Insect`は完全に削除済み。`Scripts/validate.py`に`<meatDef>`の
   残存を検出するチェックを追加済み(新たにこの間違いをしても検出できる)。
-- **Wildness**: 妖怪+AdamantiteBeast=0.985(Thrumbo相当)、Mammoth+昆虫類=0.96、
-  他の古代哺乳類=0.93。3.3参照。
+- **Wildness**: 3.3で妖怪+AdamantiteBeast=0.985(バニラThrumbo相当のつもり)、
+  Mammoth+昆虫類=0.96、他の古代哺乳類=0.93、と設計したが、3.23でバニラの
+  実際のThrumbo値(0.98、Core最難関)と比較した結果、**全23体がThrumbo以上の
+  難易度になっていた**ことが判明し是正。現在値: 妖怪8体+AdamantiteBeast=
+  **0.9**、Mammoth+古代昆虫7種=**0.75**、他の古代哺乳類6体=**0.6**。3.3・
+  3.23参照。
 - **predator**: 全23体`false`。3.6参照(入植者の子供を誤って襲う不具合の
   根本対策)。
 - **manhunterOnDamageChance** (被弾時反撃): Tier A(草食獣+穏健妖怪)=0%、
   Tier B(他妖怪+小型昆虫+オオカミ系)=35%、Tier C(Adamantite+大型昆虫)=100%。
-  3.5参照。
-- **manhunterOnTameFailChance** (テイム失敗時反撃): Tier A=0%、Tier B=12%、
-  Tier C=28%。3.7参照。
+  3.5参照(3.23のテイム難易度是正では変更していない)。
+- **manhunterOnTameFailChance** (テイム失敗時反撃): Tier A=0%、Tier B=12%→
+  **8%**、Tier C=28%→**18%**(3.23で引き下げ)。3.7・3.23参照。
 - **肉アイテムの種類**: 妖怪7体(Nekomata/Youko/Yukionna/Zashikiwarashi/
   Tengu/Oni/Dragonkin)=各自専用の新規`JP_Meat_*`(高級肉、3.22で`Meat_Human`
   流用から変更)。虫系8体(古代昆虫7種+Jorogumo)=バニラの虫肉を

@@ -15,7 +15,7 @@
       <ComfyTemperatureMax>25</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
-      <Wildness>0.93</Wildness>
+      <Wildness>0.6</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -102,7 +102,7 @@
       <ComfyTemperatureMin>-35</ComfyTemperatureMin>
       <ComfyTemperatureMax>30</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.03</ArmorRating_Sharp>
-      <Wildness>0.93</Wildness>
+      <Wildness>0.6</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -189,7 +189,7 @@
       <ComfyTemperatureMin>-25</ComfyTemperatureMin>
       <ComfyTemperatureMax>35</ComfyTemperatureMax>
       <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
-      <Wildness>0.93</Wildness>
+      <Wildness>0.6</Wildness>
     </statBases>
     <race>
       <body>QuadrupedAnimalWithPawsAndTail</body>
@@ -201,7 +201,7 @@
       <leatherDef>JP_Leather_AncientBeast</leatherDef>
       <specificMeatDef>JP_Meat_Smilodon</specificMeatDef>
       <manhunterOnDamageChance>0.35</manhunterOnDamageChance>
-      <manhunterOnTameFailChance>0.12</manhunterOnTameFailChance>
+      <manhunterOnTameFailChance>0.08</manhunterOnTameFailChance>
       <trainability>Intermediate</trainability>
       <herdAnimal>false</herdAnimal>
       <canBePredatorPrey>true</canBePredatorPrey>
