@@ -87,6 +87,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): ニホンオオカミ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_JapaneseWolf"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_JapaneseWolf"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>2.88</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== エゾオオカミ (JP_EzoWolf) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="BorealForest"]/wildAnimals</xpath>
@@ -129,6 +142,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_EzoWolf"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_EzoWolf"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>3.15</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): エゾオオカミ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_EzoWolf"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_EzoWolf"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>3.15</drawSize></value>
     </match>
   </Operation>
@@ -186,6 +212,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): マンモス
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Mammoth"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Mammoth"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>5.78</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== マゾタイロス (JP_Mazotairos) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
@@ -239,6 +278,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): マゾタイロス
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Mazotairos"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Mazotairos"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>4.2</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== アダマンタイト (JP_AdamantiteBeast) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="ExtremeDesert"]/wildAnimals</xpath>
@@ -285,6 +337,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): アダマンタイト
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_AdamantiteBeast"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_AdamantiteBeast"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>5.1</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== ケナガサイ (JP_WoollyRhino) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="Tundra"]/wildAnimals</xpath>
@@ -327,6 +392,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_WoollyRhino"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_WoollyRhino"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>3.6</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): ケナガサイ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_WoollyRhino"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_WoollyRhino"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>3.6</drawSize></value>
     </match>
   </Operation>
@@ -384,6 +462,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): オオツノジカ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_IrishElk"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_IrishElk"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>2.55</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== サーベルタイガー (JP_Smilodon) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
@@ -437,6 +528,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): サーベルタイガー
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Smilodon"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Smilodon"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>2.4</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== メガネウラ (JP_Meganeura) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="TropicalSwamp"]/wildAnimals</xpath>
@@ -477,6 +581,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Meganeura"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Meganeura"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.05</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): メガネウラ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Meganeura"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Meganeura"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>1.05</drawSize></value>
     </match>
   </Operation>
@@ -525,6 +642,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): ティタノプテラ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Titanoptera"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Titanoptera"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>2.25</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== アースロプレウラ (JP_Arthropleura) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/wildAnimals</xpath>
@@ -565,6 +695,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Arthropleura"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Arthropleura"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>2.85</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): アースロプレウラ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Arthropleura"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Arthropleura"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>2.85</drawSize></value>
     </match>
   </Operation>
@@ -613,6 +756,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): プルモノスコルピウス
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Pulmonoscorpius"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Pulmonoscorpius"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>2.55</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== メガラクネ (JP_Megarachne) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="TropicalRainforest"]/wildAnimals</xpath>
@@ -646,6 +802,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Megarachne"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Megarachne"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.95</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): メガラクネ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Megarachne"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Megarachne"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>1.95</drawSize></value>
     </match>
   </Operation>
@@ -690,6 +859,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Titanomyrma"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Titanomyrma"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.35</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): タイタノミルマ
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Titanomyrma"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Titanomyrma"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>1.35</drawSize></value>
     </match>
   </Operation>
@@ -741,6 +923,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Archimylacris"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Archimylacris"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>0.9</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): アーキミラクリス
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Archimylacris"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Archimylacris"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>0.9</drawSize></value>
     </match>
   </Operation>
@@ -798,6 +993,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): 猫又
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Nekomata"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Nekomata"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.3</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== 妖狐 (JP_Youko) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
@@ -851,6 +1059,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): 妖狐
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Youko"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Youko"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.3</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== 雪女 (JP_Yukionna) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="Tundra"]/wildAnimals</xpath>
@@ -897,6 +1118,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): 雪女
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Yukionna"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Yukionna"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.3</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== 座敷童 (JP_Zashikiwarashi) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
@@ -939,6 +1173,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Zashikiwarashi"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Zashikiwarashi"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>0.9</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): 座敷童
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Zashikiwarashi"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Zashikiwarashi"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>0.9</drawSize></value>
     </match>
   </Operation>
@@ -996,6 +1243,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): 天狗
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Tengu"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Tengu"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.5</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== 鬼人 (JP_Oni) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="AridShrubland"]/wildAnimals</xpath>
@@ -1045,6 +1305,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Oni"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Oni"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>2</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): 鬼人
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Oni"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Oni"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>2</drawSize></value>
     </match>
   </Operation>
@@ -1109,6 +1382,19 @@
     </match>
   </Operation>
 
+  <!-- 見た目の大きさ(成体・白骨化時): 竜人
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Dragonkin"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Dragonkin"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.9</drawSize></value>
+    </match>
+  </Operation>
+
   <!-- ==================== 女郎蜘蛛 (JP_Jorogumo) - 出現頻度 ==================== -->
   <Operation Class="PatchOperationConditional">
     <xpath>Defs/BiomeDef[defName="TemperateForest"]/wildAnimals</xpath>
@@ -1158,6 +1444,19 @@
     <xpath>Defs/PawnKindDef[defName="JP_Jorogumo"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
     <match Class="PatchOperationReplace">
       <xpath>Defs/PawnKindDef[defName="JP_Jorogumo"]/lifeStages/li[3]/bodyGraphicData/drawSize</xpath>
+      <value><drawSize>1.56</drawSize></value>
+    </match>
+  </Operation>
+
+  <!-- 見た目の大きさ(成体・白骨化時): 女郎蜘蛛
+       ※ dessicatedBodyGraphicData (死体が白骨化した際の見た目) を
+       上のdrawSizeと同じ値に揃えるための処理。見た目サイズだけの項目で、
+       上の「見た目の大きさ(成体)」を変更した場合は自動的にこちらも
+       追従するので、このブロック自体は編集不要。 -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/PawnKindDef[defName="JP_Jorogumo"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/PawnKindDef[defName="JP_Jorogumo"]/lifeStages/li[3]/dessicatedBodyGraphicData/drawSize</xpath>
       <value><drawSize>1.56</drawSize></value>
     </match>
   </Operation>

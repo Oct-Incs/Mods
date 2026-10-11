@@ -670,6 +670,70 @@ RaceProperties/ThingDefの新しいフィールドを使う際は、**そのフ�
      ひとまず様子見で確定。**今後も一切産卵が起こらないようであれば、その時に
      改めて報告してもらい、その時点で本格的に調査する。**
 
+### 3.21 白骨化(dessicated)段階の画像が無い/CharacterEditor連携クラッシュの調査
+
+ユーザーから2件の報告が同時に来た。対応の前に、**このセッション自身が
+`main`の最新状態を取得せずに作業を始めてしまうミスを犯した**ことを先に
+記録する: 環境がリセットされた新しいコンテナで本件に着手した際、
+ローカルのチェックアウトが(3.19のmeatDef修正や3.17のfoodType修正などを
+含む)複数コミット分古い状態のままだと気づかず、古い`<meatDef>JP_Meat_Insect
+</meatDef>`方式を前提に`mergeCompatibilityTags`の削除コミットを作って
+しまった(結果的に無害だったが、本来は`git fetch origin main && git log
+origin/main`で最新状態を確認してから始めるべきだった。README.mdの
+「空に見えたら」の注意書きと全く同種の事故で、他人事ではなかった)。
+以後、作業前に必ず`git reset --hard origin/main`相当で完全同期することを
+徹底する。
+
+1. **白骨化段階の画像が無い件(確定・修正済み)**: Alpha Animalsの全個体
+   (例: `AA_ArcticLion`)を確認すると、`lifeStages`の各`<li>`に
+   `bodyGraphicData`と**並列**で`dessicatedBodyGraphicData`
+   (`texPath`+`drawSize`のみの単純な構造)が明示的に設定されている。
+   RimWorldのWeb検索でも「`dessicatedBodyGraphicData`が無いと
+   `Failed to find any textures`になる」という実例(Koalaの custom race)が
+   見つかった。本MODは23体×3ライフステージ、計69箇所のどこにも
+   `dessicatedBodyGraphicData`が一つも設定されていなかったことを確認
+   (`grep -c dessicatedBodyGraphicData Defs/PawnKindDefs/*.xml`が全て0)。
+   これが「死亡後、白骨化Phaseの画像がない」の確定した原因。
+   **修正**: 専用の白骨化アートは無いため、暫定的に各個体自身の生存時の
+   `texPath`/`drawSize`をそのまま`dessicatedBodyGraphicData`に複製する形で
+   全69箇所に追加した(真の骸骨アートではないが、最低限「何も表示されない」
+   状態は解消される)。`Scripts/gen_settings_patch.py`も、成体のdrawSize
+   パッチと連動して`dessicatedBodyGraphicData/drawSize`も追従するよう拡張
+   済み。**将来、専用の白骨化アート(`Textures/`配下への新規画像追加)が
+   手に入ったら、該当`texPath`だけを差し替えればよい**(CLAUDE.mdの
+   「Texturesに触れない」ルールに従い、今回は既存ファイルの参照のみで、
+   画像ファイル自体は一切作成・変更していない)。
+
+2. **CharacterEditor連携のクラッシュ(未確定・継続調査が必要)**: 提供された
+   クラッシュログのスタックトレースを確認。セーブ読み込み中
+   (`Verse.SavedGameLoaderNow:LoadGameFromSaveFileNow`)に、何らかのポーンの
+   `Pawn_IdeoTracker.ExposeData` → `get_Certainty` → `Pawn.DevelopmentalStage`
+   → `Pawn_AgeTracker`のライフステージ再計算 → (CharacterEditorのMonoMod
+   パッチ経由で)`CharacterEditor.CEditor.OnRecalcIndex` →
+   `CharacterEditor.Capturer.Render` → `UnityEngine.Camera.Render`という
+   経路で、ログに直前に出ている`Graphics device is null.`の状態のまま
+   ネイティブクラッシュしている。つまり**クラッシュの直接の発生源は
+   CharacterEditor MOD自身のポートレート描画処理内**であり、本MODのC#
+   コード(そもそも存在しない)が直接クラッシュさせているわけではない。
+   疑わしい点として、このMODの妖怪8体は`body=Human`(人型ボディ)+
+   `intelligence=Animal`という、他のMOD含め全体のmodlist中でも珍しい組み
+   合わせを使っており、CharacterEditorの描画処理がこの組み合わせを
+   「完全な人間ポーン」と誤認して通常ありえない状態(IdeoTracker関連の
+   処理など)に入り込んでいる可能性があるが、**これは未確認の仮説に留まる**
+   (クラッシュスタックにはどのポーンかの情報が無く、人間コロニストでも
+   同じ経路を辿る可能性があるため、本MOD特有のバグなのか、CharacterEditor
+   単体の既知の非同期スレッド描画バグなのか、ログだけでは断定できない)。
+   なお本MODの履歴には、この全く同じ`CharacterEditor.Capturer`描画クラッシュ
+   が3.4の調査中にも一度疑われており(当時はMammoth/AdamantiteBeastの
+   drawSizeを6.8/6.0→5.78/5.1に下げる対応をしたが、実際の原因は別
+   (wildAnimalsのXML形式ミス)だったと判明している)。両者が無関係の
+   偶然である可能性も、何らかの形で関連している可能性も両方残っている。
+   **次に取るべき具体的な切り分け手順(ユーザーに依頼すること)**:
+   CharacterEditorを一時的に無効化した状態で同じセーブファイルの読み込みを
+   再現し、クラッシュが起こらなくなるかを確認してもらう。起こらなくなれば
+   CharacterEditor側(またはその連携)の問題と確定でき、依然発生するなら
+   本MOD以外の原因を疑う必要がある。
+
 ## 4. 現在の各パラメータの状態 (要点)
 
 詳細な数値は各ファイルを直接参照。ここでは「どのロジックで決めたか」の
@@ -769,6 +833,14 @@ RimWorld/JP_Beasts/
   されていたため恒常的に+1されていた。検索文字列を「基本毛量(」(直後の
   括弧まで含める)に変更し、実際の毛刈り個体ブロックのコメントだけを
   拾うよう修正した結果、16 vs 16で一致することを確認した(2026-09-18)。
+- **3.21のCharacterEditorクラッシュ**: 本MODが直接の原因かどうか未確定。
+  次回、ユーザーにCharacterEditorを一時的に無効化した状態での再現テストを
+  依頼し、結果次第で本格調査するか様子見するかを判断すること。
+- **3.21で追加したdessicatedBodyGraphicData**: 現状は各個体自身の生存時の
+  テクスチャを流用した暫定対応。専用の白骨化アートが用意されたら、
+  対応する`texPath`のみ差し替えること(数値パラメータの変更なので
+  Texturesルールには抵触しない。新規画像ファイルの追加自体は引き続き
+  ユーザーの明示的な指示が必要)。
 
 ## 8. その他の実務上の注意
 
